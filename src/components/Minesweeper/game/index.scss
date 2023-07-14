@@ -1,0 +1,84 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.minesweeper {
+    display: inline-block;
+    border: 1px solid #777;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .cell {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+        &.open {
+          background-color: #ddd;
+          &:hover {
+            background-color: #ddd;
+          }
+        }
+        &.mine {
+          color: red;
+          background-color: #ddd;
+          &:hover {
+            background-color: #ddd;
+          }
+        }
+      }
+    }
+  }
+  .btn1{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+  .btn2{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border-color: #fff;
+  }
+  .overlay {
+    position:absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#fff
+  }
+  
