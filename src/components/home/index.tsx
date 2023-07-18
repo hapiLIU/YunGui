@@ -38,6 +38,9 @@ export default function Home() {
             </div>
             <div className='menu'>
                 <Button className='menuBtn' onClick={() => navigate('/minesweeper')}>💣</Button>
+                <Button className='menuBtn' onClick={() => navigate('/sudoku')}>9️⃣</Button>
+                {/* <Button className='menuBtn'>♠</Button>
+                <Button className='menuBtn'>⚄</Button> */}
             </div>
         </div>
     )

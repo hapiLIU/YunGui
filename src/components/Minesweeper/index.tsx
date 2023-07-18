@@ -48,7 +48,7 @@ const Minesweeper = () => {
           <div style={{ display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: 'center' }}>
             <div>行：<InputNumber min={1} defaultValue={10} onChange={(value) => setCustomRow(value ?? 10)} /></div>
             <div> 列：<InputNumber min={1} defaultValue={10} onChange={(value) => setCustomCol(value ?? 10)} /></div>
-            <div>💣：<InputNumber min={1} defaultValue={25} onChange={(value) => setCustomMines(value ?? 25)} /></div>
+            <div>💣：<InputNumber min={1} defaultValue={25} max={customRow * customCol} onChange={(value) => setCustomMines(value ?? 25)} /></div>
           </div>
         </div>
       </Modal>

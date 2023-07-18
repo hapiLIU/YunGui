@@ -1,0 +1,35 @@
+.main{
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    .content{
+        width: 924px;
+        height: 924px;
+        border: 1px solid #000;  
+        display: flex;
+        flex-wrap:  wrap ;
+        .bigCell{
+            width: 306px;
+            height: 306px;
+            margin: 0;
+            border: 1px solid #000;
+            display: flex;
+        flex-wrap:  wrap ;
+            .numberCell{
+                width: calc(100% /3);
+                height: calc(100% /3);
+                // border: 1px solid hsl(223deg 4.58% 64.21%);
+                font-size: 48px;
+            }
+        }
+    }
+}
+.ant-btn-default:disabled{
+    cursor: auto;
+    border-color: #fff;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+}
