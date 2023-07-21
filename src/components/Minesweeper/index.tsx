@@ -13,6 +13,7 @@ const Minesweeper = () => {
 
   return (
     <div className='main'>
+      <h1>扫雷</h1>
       <Button type="primary" onClick={() => setModalOpen(true)} style={{ width: 200, height: 50, margin: 20 }}>
         开始游戏
       </Button>

@@ -1,0 +1,16 @@
+.mainGobang{
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+
+    .headerGobang{
+        width: 700px;
+        height: 100px;
+    }
+    .contentGobang{
+        
+    }
+}

@@ -37,10 +37,10 @@ export default function Home() {
                 </label>
             </div>
             <div className='menu'>
-                <Button className='menuBtn' onClick={() => navigate('/minesweeper')}>💣</Button>
-                <Button className='menuBtn' onClick={() => navigate('/sudoku')}>9️⃣</Button>
-                {/* <Button className='menuBtn'>♠</Button>
-                <Button className='menuBtn'>⚄</Button> */}
+                <Button className='menuBtn' title='扫雷' onClick={() => navigate('/minesweeper')}>💣</Button>
+                <Button className='menuBtn' title='数独' onClick={() => navigate('/sudoku')}>9️⃣</Button>
+                <Button className='menuBtn'>♠</Button>
+                <Button className='menuBtn' onClick={() => navigate('/gobang')}>⚄</Button>
             </div>
         </div>
     )

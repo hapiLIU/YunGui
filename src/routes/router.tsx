@@ -5,6 +5,7 @@ import MinesweeperGame from '../components/Minesweeper/game';
 import Home from '../components/home';
 import Sudoku from '../components/Sudoku';
 import SudokuGame from '../components/Sudoku/game';
+import Gobang from '../components/Gobang';
 
 export default function Router() {
     return (
@@ -15,6 +16,7 @@ export default function Router() {
                 <Route path="/minesweeper/game/:rows/:cols/:mines" element={<MinesweeperGame />}></Route>
                 <Route path="/sudoku" element={<Sudoku />}></Route>
                 <Route path="/sudoku/game/:modal" element={<SudokuGame />}></Route>
+                <Route path="/gobang" element={<Gobang />}></Route>
             </Routes>
         </BrowserRouter>
     );
