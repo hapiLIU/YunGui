@@ -16,6 +16,9 @@ const Minesweeper = () => {
       <Button type="primary" onClick={() => setModalOpen(true)} style={{ width: 200, height: 50 }}>
         开始游戏
       </Button>
+      <Button type="primary" onClick={() => navigate('/')} style={{ width: 200, height: 50 }}>
+        返回首页
+      </Button>
       <Modal
         title="请选择游戏模式"
         wrapClassName={'modal'}

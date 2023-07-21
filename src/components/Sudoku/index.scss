@@ -2,8 +2,12 @@
     width: 100vw;
     height: 100vh; 
     display: flex;
+    flex-direction: row;
     justify-content: center; 
-    align-items: center
+    align-items: center;
+    button{
+      margin: 20px;
+    }
   }
   .ant-modal-content{
     text-align: center !important;
