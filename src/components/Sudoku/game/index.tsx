@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './index.scss';
 import { Button } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,7 +10,8 @@ interface Sudo {
     col: number;   // 列
     value: number;   // 值
     id: number;   // 专属ID
-    isDefault: boolean
+    isDefault: boolean;   // 是否默认
+    isSameExists: boolean;   // 是否存在相同
 }
 
 const generateData = (modal: string) => {
@@ -26,7 +27,8 @@ const generateData = (modal: string) => {
                 col: (((i % 3) * 3) + ((j % 3) + 1)),
                 value: 0,
                 id: num,
-                isDefault: true
+                isDefault: true,
+                isSameExists: false
             };
             num++
         }
@@ -122,7 +124,7 @@ const generateData = (modal: string) => {
 
         result.map(item => {
             item.map(items => {
-                if (selectedNumbers.indexOf(items.id) > 0) {
+                if (selectedNumbers.indexOf(items.id) >= 0) {
                     items.isDefault = false
                     items.value = 0
                 }
@@ -140,6 +142,9 @@ const generateData = (modal: string) => {
 };
 // 判断当前位置是否可以填充指定数字
 const isValid = (board: Sudo[][], items: Sudo, num: number): boolean => {
+    if (num == 0) {
+        return true
+    }
     // 检查当前行是否已经有相同的数字
     if (filterSame(board, 'row', items.row, items.id).indexOf(num) >= 0) {
         return false
@@ -169,10 +174,21 @@ const filterSame = (board: Sudo[][], filed: string, filedData: number, eliminate
 
 const SudokuGame = () => {
     let params = useParams();
+    const navigate = useNavigate()
 
     const [sudoData, setSudoData] = useState<Sudo[][]>(generateData(params.modal ?? 'easy'))
     const [selectedItem, setSelectedItem] = useState<Sudo | null>(null)
     const [sudoKey, setSudoKey] = useState<boolean>(false)
+    const [remainingTimes, setRemainingTimes] = useState<number>(params.modal == 'easy' ? 30 : (params.modal == 'medium' ? 45 : 60))
+    const [gameState, setGameState] = useState<string>('NotStart') // 游戏状态  NotStart/未开始 Start/开始 Suspend/暂停 Over/结束 Win/胜利
+    const [showOverlay, setShowOverlay] = useState(false);  // 全局蒙版
+    const gameStateWord: any = {
+        NotStart: "游戏未开始",
+        Start: "游戏开始",
+        Suspend: "游戏暂停！",
+        Over: "游戏结束！",
+        Win: "胜利！！！",
+    }
 
     // 点击选中格子，通过数字按键修改数据
     const clickChange = (items: Sudo) => {
@@ -183,9 +199,16 @@ const SudokuGame = () => {
         }
     }
 
+    // 数字按键按下，将数字填写入所点击的格子
     const handleKeyDown = (event: { keyCode: number; key: string }) => {
         if (selectedItem != null) {
+            if (gameState == 'NotStart') {
+                setGameState('Start')
+            }
             if (event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57) {
+                if (selectedItem.value == 0) {
+                    setRemainingTimes(pre => pre - 1)
+                }
                 let item = selectedItem
                 item.value = Number(event.key)
                 setSelectedItem(item)
@@ -198,11 +221,28 @@ const SudokuGame = () => {
                         }
                     })
                 })
+                copySudoData.map(item => {
+                    item.map(items => {
+                        if (items.value != 0 && !items.isDefault) {
+                            if (!isValid(sudoData, items, items.value)) {
+                                items.isSameExists = true
+                            } else {
+                                items.isSameExists = false
+                            }
+                        } else {
+                            items.isSameExists = false
+                        }
+                    })
+                })
                 setSudoData(copySudoData)
             }
             if (event.keyCode == 8 || event.keyCode === 48) {
+                if (selectedItem.value != 0) {
+                    setRemainingTimes(pre => pre + 1)
+                }
                 let item = selectedItem
                 item.value = 0
+                item.isSameExists = false
                 setSelectedItem(item)
 
                 const copySudoData = [...sudoData]
@@ -218,15 +258,74 @@ const SudokuGame = () => {
         }
     }
 
+    // 计时器操作
+    const [time, setTime] = useState<number>(0);
+    const timerRef = useRef<any>(null);
+
+    useEffect(() => {
+        if (gameState == 'Start') {
+            setShowOverlay(false)
+            timerRef.current = window.setInterval(() => {
+                setTime((prevTime) => prevTime + 1000);
+            }, 1000);
+            return () => clearInterval(timerRef.current);
+        } else if (gameState == 'Suspend' || gameState == 'Over' || gameState == 'Win') {
+            clearInterval(timerRef.current);
+            setShowOverlay(true)
+        }
+    }, [gameState]);
+
+    const minutes = Math.floor((time / 1000 / 60) % 60);
+    const seconds = Math.floor((time / 1000) % 60);
+
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+    //   重新对局
+    const again = () => {
+        setSudoData(generateData(params.modal ?? 'easy'))
+        setSelectedItem(null)
+        setRemainingTimes(params.modal == 'easy' ? 30 : (params.modal == 'medium' ? 45 : 60))
+        setTime(0)
+        setGameState('NotStart')
+        setShowOverlay(false)
+        setSudoKey(prev => !prev)
+    }
+
+    useEffect(() => {
+        if (remainingTimes == 0) {
+            let isWin = true
+            sudoData.forEach(item => {
+                item.forEach(items => {
+                    if (items.isSameExists) {
+                        isWin = false
+                    }
+                })
+            })
+            if (isWin) {
+                setGameState('Win')
+                setShowOverlay(true)
+            }
+        }
+    }, [remainingTimes, sudoData])
+
     return (
         <div className='main' onKeyDown={handleKeyDown}>
-            <div className='content' key={sudoKey ? 'aa' : 'bb'}>
+            <div className='title' style={{ width: 924 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Button type="primary" onClick={() => navigate('/sudoku')}>更换模式</Button>
+                    <h3> Time: {formattedMinutes}:{formattedSeconds} </h3>
+                    <Button type="primary" onClick={again}>重新对局</Button>
+                </div>
+            </div>
+            <div className='content' key={sudoKey ? 'aa' : 'bb'} style={{ position: "relative" }}>
+                {showOverlay && <div className="overlay" >{gameStateWord[gameState]}</div>}
                 {sudoData.map((item, i) => {
                     return (
                         <div className='bigCell' key={`cell${i}`}>
                             {item.map(items => {
                                 return (
-                                    <Button className='numberCell' key={`${items.id} / ${items.value}`} onClick={() => clickChange(items)} style={{ fontWeight: items.isDefault ? 800 : 400 }} disabled={items.isDefault ? true : false}>{items.value == 0 ? '' : items.value}</Button>
+                                    <Button className='numberCell' key={`${items.id} / ${items.value}`} onClick={() => clickChange(items)} style={{ fontWeight: items.isDefault ? 800 : 400, borderColor: items.isSameExists ? "red" : '' }} disabled={items.isDefault ? true : false}>{items.value == 0 ? '' : items.value}</Button>
                                 )
                             })}
                         </div>
