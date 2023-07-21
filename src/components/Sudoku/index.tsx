@@ -10,10 +10,10 @@ const Sudoku = () => {
 
     return (
         <div className='main'>
-            <Button type="primary" onClick={() => setModalOpen(true)} style={{ width: 200, height: 50 }}>
+            <Button type="primary" onClick={() => setModalOpen(true)} style={{ width: 200, height: 50, margin: 20 }}>
                 开始游戏
             </Button>
-            <Button type="primary" onClick={() => navigate('/')} style={{ width: 200, height: 50 }}>
+            <Button type="primary" onClick={() => navigate('/')} style={{ width: 200, height: 50, margin: 20 }}>
                 返回首页
             </Button>
             <Modal

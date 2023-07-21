@@ -310,15 +310,15 @@ const SudokuGame = () => {
     }, [remainingTimes, sudoData])
 
     return (
-        <div className='main' onKeyDown={handleKeyDown}>
-            <div className='title' style={{ width: 924 }}>
+        <div className='mainSudoku' onKeyDown={handleKeyDown}>
+            <div className='titleSudoku' style={{ width: 924 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Button type="primary" onClick={() => navigate('/sudoku')}>更换模式</Button>
                     <h3> Time: {formattedMinutes}:{formattedSeconds} </h3>
                     <Button type="primary" onClick={again}>重新对局</Button>
                 </div>
             </div>
-            <div className='content' key={sudoKey ? 'aa' : 'bb'} style={{ position: "relative" }}>
+            <div className='contentSudoku' key={sudoKey ? 'aa' : 'bb'} style={{ position: "relative" }}>
                 {showOverlay && <div className="overlay" >{gameStateWord[gameState]}</div>}
                 {sudoData.map((item, i) => {
                     return (

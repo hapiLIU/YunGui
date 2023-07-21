@@ -1,10 +1,11 @@
-.main{
+.mainSudoku{
     width: 100vw;
     height: 100vh; 
     display: flex;
+    flex-direction: column;
     justify-content: center; 
     align-items: center;
-    .content{
+    .contentSudoku{
         width: 924px;
         height: 924px;
         border: 1px solid #000;  
