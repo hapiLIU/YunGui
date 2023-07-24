@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './index.scss';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { AlertFilled, AlertOutlined } from '@ant-design/icons';
 
@@ -39,6 +39,10 @@ const Gobang = () => {
         Over: "游戏结束！",
         Win: "胜利！！！",
     }
+    const [messageApi, contextHolder] = message.useMessage();   // 全局提示
+    const [blackPieces, setBlackPieces] = useState<Gobang[]>([])    // 黑子
+    const [whitePieces, setWhitePieces] = useState<Gobang[]>([])    // 白子
+    const [victory, setVictory] = useState<string | null>(null)
 
     useEffect(() => {
         const canvas = document.getElementById('gobang') as HTMLCanvasElement;
@@ -97,11 +101,15 @@ const Gobang = () => {
         const col = Math.floor(x / cellSize);
 
         let copyData = [...pieces]
-        if (!copyData[row][col].color) {
+        if (!copyData[row][col].color && (gameState == 'Start' || gameState == 'NotStart')) {
             copyData[row][col].color = rotationColor ? 'black' : 'white'
             setPieces(copyData)
+            if (rotationColor) {
+                setBlackPieces(pre => [...pre, { col: col, row: row, color: 'black' }])
+            } else {
+                setWhitePieces(pre => [...pre, { col: col, row: row, color: 'white' }])
+            }
             setRotationColor(pre => !pre)
-            setGameState('Start')   // 处理不严谨，下次继续优化项
         }
     };
 
@@ -118,12 +126,86 @@ const Gobang = () => {
             setRotationColor(pre => !pre)
         } else {
             // 做个全局提示
+            messageApi.open({
+                type: 'warning',
+                content: '对局进行中，无法再更换落子方...',
+            })
         }
     }
 
+    useEffect(() => {
+        // console.log('black', blackPieces)
+        // console.log('white', whitePieces)
+        if (blackPieces.length + whitePieces.length > 0) {
+            setGameState('Start')
+        }
+        if (blackPieces.length >= 5) {
+            if (isWin(blackPieces)) {
+                setGameState("Win")
+                setVictory(' 黑子 ')
+            }
+        }
+        if (whitePieces.length >= 5) {
+            if (isWin(whitePieces)) {
+                setGameState("Win")
+                setVictory(' 白子 ')
+            }
+        }
+    }, [blackPieces, whitePieces])
+
+    const isWin = (data: Gobang[]) => {
+        let gameResult: boolean = false
+
+        data.forEach(item => {
+            // 右
+            if (pieces[item.row][item.col + 1]?.color == item.color && pieces[item.row][item.col + 2]?.color == item.color && pieces[item.row][item.col + 3]?.color == item.color && pieces[item.row][item.col + 4]?.color == item.color) {
+                gameResult = true
+            }
+            // 左
+            if (pieces[item.row][item.col - 1]?.color == item.color && pieces[item.row][item.col - 2]?.color == item.color && pieces[item.row][item.col - 3]?.color == item.color && pieces[item.row][item.col - 4]?.color == item.color) {
+                gameResult = true
+            }
+            // 上
+            if (pieces[item.row - 1][item.col]?.color == item.color && pieces[item.row - 2][item.col]?.color == item.color && pieces[item.row - 3][item.col]?.color == item.color && pieces[item.row - 4][item.col]?.color == item.color) {
+                gameResult = true
+            }
+            // 下
+            if (pieces[item.row + 1][item.col]?.color == item.color && pieces[item.row + 2][item.col]?.color == item.color && pieces[item.row + 3][item.col]?.color == item.color && pieces[item.row + 4][item.col]?.color == item.color) {
+                gameResult = true
+            }
+            // 右上
+            if (pieces[item.row - 1][item.col + 1]?.color == item.color && pieces[item.row - 2][item.col + 2]?.color == item.color && pieces[item.row - 3][item.col + 3]?.color == item.color && pieces[item.row - 4][item.col + 4]?.color == item.color) {
+                gameResult = true
+            }
+            // 右下
+            if (pieces[item.row + 1][item.col + 1]?.color == item.color && pieces[item.row + 2][item.col + 2]?.color == item.color && pieces[item.row + 3][item.col + 3]?.color == item.color && pieces[item.row + 4][item.col + 4]?.color == item.color) {
+                gameResult = true
+            }
+            // 左上
+            if (pieces[item.row - 1][item.col - 1]?.color == item.color && pieces[item.row - 2][item.col - 2]?.color == item.color && pieces[item.row - 3][item.col - 3]?.color == item.color && pieces[item.row - 4][item.col - 4]?.color == item.color) {
+                gameResult = true
+            }
+            // 左下
+            if (pieces[item.row + 1][item.col - 1]?.color == item.color && pieces[item.row + 2][item.col - 2]?.color == item.color && pieces[item.row + 3][item.col - 3]?.color == item.color && pieces[item.row + 4][item.col - 4]?.color == item.color) {
+                gameResult = true
+            }
+        })
+
+        return gameResult
+    }
+    useEffect(() => {
+        // console.log(gameState)
+        if (gameState == 'Win') {
+            messageApi.open({
+                type: 'success',
+                content: victory + '胜利！！！',
+            })
+        }
+    }, [gameState])
 
     return (
         <div className='mainGobang'>
+            {contextHolder}
             <h1>五子棋</h1>
             <div className='headerGobang' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Button type="primary" onClick={() => navigate('/')}>回首页</Button>
