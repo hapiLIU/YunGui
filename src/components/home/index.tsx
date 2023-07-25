@@ -39,8 +39,8 @@ export default function Home() {
             <div className='menu'>
                 <Button className='menuBtn' title='扫雷' onClick={() => navigate('/minesweeper')}>💣</Button>
                 <Button className='menuBtn' title='数独' onClick={() => navigate('/sudoku')}>9️⃣</Button>
-                <Button className='menuBtn'>♠</Button>
-                <Button className='menuBtn' onClick={() => navigate('/gobang')}>⚄</Button>
+                <Button className='menuBtn' title='五子棋' onClick={() => navigate('/gobang')}>⚄</Button>
+                <Button className='menuBtn' title='纸牌' onClick={() => navigate('/playingCards')}>♠</Button>
             </div>
         </div>
     )

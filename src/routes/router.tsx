@@ -6,6 +6,7 @@ import Home from '../components/home';
 import Sudoku from '../components/Sudoku';
 import SudokuGame from '../components/Sudoku/game';
 import Gobang from '../components/Gobang';
+import PlayingCards from '../components/PlayingCards';
 
 export default function Router() {
     return (
@@ -17,6 +18,7 @@ export default function Router() {
                 <Route path="/sudoku" element={<Sudoku />}></Route>
                 <Route path="/sudoku/game/:modal" element={<SudokuGame />}></Route>
                 <Route path="/gobang" element={<Gobang />}></Route>
+                <Route path="/playingCards" element={<PlayingCards />}></Route>
             </Routes>
         </BrowserRouter>
     );
