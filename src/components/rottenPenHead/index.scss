@@ -1,0 +1,36 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+
+  .top {
+    width: calc(100% - 40px);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    font-family: STXingkai;
+    font-size: 40px;
+  }
+
+  .content {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: row;
+
+    .RottenPenHead-menu {
+      padding-top: 5px;
+      height: calc(100% - 5px);
+      width: 10%;
+    }
+
+    .RottenPenHead-main {
+      height: 100%;
+      width: 90%;
+    }
+  }
+}

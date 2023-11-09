@@ -1,0 +1,222 @@
+[
+  {
+    "fontName": "宋体",
+    "EngName": "SimSun",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "黑体",
+    "EngName": "SimHei",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "微软雅黑",
+    "EngName": "Microsoft Yahei",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "微软正黑体",
+    "EngName": "Microsoft JhengHei",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "楷体",
+    "EngName": "KaiTi",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "新宋体",
+    "EngName": "NSimSun",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "仿宋",
+    "EngName": "FangSong",
+    "common": "windows常见内置"
+  },
+  {
+    "fontName": "苹方",
+    "EngName": "PingFang SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文黑体",
+    "EngName": "STHeiti",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文楷体",
+    "EngName": "STKaiti",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文宋体",
+    "EngName": "STSong",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文仿宋",
+    "EngName": "STFangsong",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文中宋",
+    "EngName": "STZhongsong",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文琥珀",
+    "EngName": "STHupo",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文新魏",
+    "EngName": "STXinwei",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文隶书",
+    "EngName": "STLiti",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "华文行楷",
+    "EngName": "STXingkai",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "冬青黑体简",
+    "EngName": "Hiragino Sans GB",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "兰亭黑-简",
+    "EngName": "Lantinghei SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "翩翩体-简",
+    "EngName": "Hanzipen SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "手札体-简",
+    "EngName": "Hannotate SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "宋体-简",
+    "EngName": "Songti SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "娃娃体-简",
+    "EngName": "Wawati SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "魏碑-简",
+    "EngName": "Weibei SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "行楷-简",
+    "EngName": "Xingkai SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "雅痞-简",
+    "EngName": "Yapi SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "圆体-简",
+    "EngName": "Yuanti SC",
+    "common": "Mac OS常见内置"
+  },
+  {
+    "fontName": "幼圆",
+    "EngName": "YouYuan",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "隶书",
+    "EngName": "LiSu",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文细黑",
+    "EngName": "STXihei",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文楷体",
+    "EngName": "STKaiti",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文宋体",
+    "EngName": "STSong",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文仿宋",
+    "EngName": "STFangsong",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文中宋",
+    "EngName": "STZhongsong",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文彩云",
+    "EngName": "STCaiyun",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文琥珀",
+    "EngName": "STHupo",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文新魏",
+    "EngName": "STXinwei",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文隶书",
+    "EngName": "STLiti",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "华文行楷",
+    "EngName": "STXingkai",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "方正舒体",
+    "EngName": "FZShuTi",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "方正姚体",
+    "EngName": "FZYaoti",
+    "common": "office安装后新增"
+  },
+  {
+    "fontName": "思源黑体",
+    "EngName": "Source Han Sans CN",
+    "common": "开源字体"
+  },
+  {
+    "fontName": "思源宋体",
+    "EngName": "Source Han Serif SC",
+    "common": "开源字体"
+  },
+  {
+    "fontName": "文泉驿微米黑",
+    "EngName": "WenQuanYi Micro Hei",
+    "common": "开源字体"
+  }
+]
