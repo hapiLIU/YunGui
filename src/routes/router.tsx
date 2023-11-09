@@ -1,12 +1,12 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Minesweeper from '../components/Minesweeper';
-import MinesweeperGame from '../components/Minesweeper/game';
+import Minesweeper from '../components/playGames/Minesweeper';
+import MinesweeperGame from '../components/playGames/Minesweeper/game';
 import Home from '../components/home';
-import Sudoku from '../components/Sudoku';
-import SudokuGame from '../components/Sudoku/game';
-import Gobang from '../components/Gobang';
-import PlayingCards from '../components/PlayingCards';
+import Sudoku from '../components/playGames/Sudoku';
+import SudokuGame from '../components/playGames/Sudoku/game';
+import Gobang from '../components/playGames/Gobang';
+import PlayingCards from '../components/playGames/PlayingCards';
 
 export default function Router() {
     return (
