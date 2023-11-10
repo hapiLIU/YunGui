@@ -63,6 +63,26 @@ const Gobang = () => {
             ctx.lineTo(gridSize - cellSize / 2, cellSize / 2 + i * cellSize);
         }
         ctx.stroke();
+        // 绘制定位五点
+        const fivePoint = [
+            { x: 3, y: 3 },
+            { x: 11, y: 3 },
+            { x: 3, y: 11 },
+            { x: 11, y: 11 },
+            { x: 7, y: 7 },
+        ]
+        fivePoint.forEach(item => {
+            ctx.beginPath();
+            ctx.arc(
+                cellSize / 2 + item.x * cellSize,
+                cellSize / 2 + item.y * cellSize,
+                (cellSize / 2 - 4) / 2,
+                0,
+                2 * Math.PI
+            );
+            ctx.fillStyle = "#000";
+            ctx.fill();
+        })
 
         // 绘制棋子
         const drawPiece = (x: number, y: number, color: string) => {
@@ -115,6 +135,8 @@ const Gobang = () => {
 
     // 重新对局
     const again = () => {
+        setBlackPieces([])
+        setWhitePieces([])
         setPieces(generateData())
         setRotationColor(true)
         setGameState('NotStart')
@@ -196,6 +218,8 @@ const Gobang = () => {
     useEffect(() => {
         // console.log(gameState)
         if (gameState == 'Win') {
+            // console.log(blackPieces)
+            // console.log(whitePieces)
             messageApi.open({
                 type: 'success',
                 content: victory + '胜利！！！',
