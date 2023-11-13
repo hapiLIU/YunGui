@@ -120,18 +120,22 @@ const Gobang = () => {
         const row = Math.floor(y / cellSize);
         const col = Math.floor(x / cellSize);
 
+        chessPieceDrop(row, col)
+    };
+    // 落子
+    const chessPieceDrop = (pointX: number, pointY: number, player?: string,) => {
         let copyData = [...pieces]
-        if (!copyData[row][col].color && (gameState == 'Start' || gameState == 'NotStart')) {
-            copyData[row][col].color = rotationColor ? 'black' : 'white'
+        if (!copyData[pointX][pointY].color && (gameState == 'Start' || gameState == 'NotStart')) {
+            copyData[pointX][pointY].color = rotationColor ? 'black' : 'white'
             setPieces(copyData)
             if (rotationColor) {
-                setBlackPieces(pre => [...pre, { col: col, row: row, color: 'black' }])
+                setBlackPieces(pre => [...pre, { col: pointY, row: pointX, color: 'black' }])
             } else {
-                setWhitePieces(pre => [...pre, { col: col, row: row, color: 'white' }])
+                setWhitePieces(pre => [...pre, { col: pointY, row: pointX, color: 'white' }])
             }
             setRotationColor(pre => !pre)
         }
-    };
+    }
 
     // 重新对局
     const again = () => {
@@ -180,35 +184,35 @@ const Gobang = () => {
 
         data.forEach(item => {
             // 右
-            if (pieces[item.row][item.col + 1]?.color == item.color && pieces[item.row][item.col + 2]?.color == item.color && pieces[item.row][item.col + 3]?.color == item.color && pieces[item.row][item.col + 4]?.color == item.color) {
+            if (pieces[item.row]?.[item.col + 1]?.color == item.color && pieces[item.row]?.[item.col + 2]?.color == item.color && pieces[item.row]?.[item.col + 3]?.color == item.color && pieces[item.row]?.[item.col + 4]?.color == item.color) {
                 gameResult = true
             }
             // 左
-            if (pieces[item.row][item.col - 1]?.color == item.color && pieces[item.row][item.col - 2]?.color == item.color && pieces[item.row][item.col - 3]?.color == item.color && pieces[item.row][item.col - 4]?.color == item.color) {
+            if (pieces[item.row]?.[item.col - 1]?.color == item.color && pieces[item.row]?.[item.col - 2]?.color == item.color && pieces[item.row]?.[item.col - 3]?.color == item.color && pieces[item.row]?.[item.col - 4]?.color == item.color) {
                 gameResult = true
             }
             // 上
-            if (pieces[item.row - 1][item.col]?.color == item.color && pieces[item.row - 2][item.col]?.color == item.color && pieces[item.row - 3][item.col]?.color == item.color && pieces[item.row - 4][item.col]?.color == item.color) {
+            if (pieces[item.row - 1]?.[item.col]?.color == item.color && pieces[item.row - 2]?.[item.col]?.color == item.color && pieces[item.row - 3]?.[item.col]?.color == item.color && pieces[item.row - 4]?.[item.col]?.color == item.color) {
                 gameResult = true
             }
             // 下
-            if (pieces[item.row + 1][item.col]?.color == item.color && pieces[item.row + 2][item.col]?.color == item.color && pieces[item.row + 3][item.col]?.color == item.color && pieces[item.row + 4][item.col]?.color == item.color) {
+            if (pieces[item.row + 1]?.[item.col]?.color == item.color && pieces[item.row + 2]?.[item.col]?.color == item.color && pieces[item.row + 3]?.[item.col]?.color == item.color && pieces[item.row + 4]?.[item.col]?.color == item.color) {
                 gameResult = true
             }
             // 右上
-            if (pieces[item.row - 1][item.col + 1]?.color == item.color && pieces[item.row - 2][item.col + 2]?.color == item.color && pieces[item.row - 3][item.col + 3]?.color == item.color && pieces[item.row - 4][item.col + 4]?.color == item.color) {
+            if (pieces[item.row - 1]?.[item.col + 1]?.color == item.color && pieces[item.row - 2]?.[item.col + 2]?.color == item.color && pieces[item.row - 3]?.[item.col + 3]?.color == item.color && pieces[item.row - 4]?.[item.col + 4]?.color == item.color) {
                 gameResult = true
             }
             // 右下
-            if (pieces[item.row + 1][item.col + 1]?.color == item.color && pieces[item.row + 2][item.col + 2]?.color == item.color && pieces[item.row + 3][item.col + 3]?.color == item.color && pieces[item.row + 4][item.col + 4]?.color == item.color) {
+            if (pieces[item.row + 1]?.[item.col + 1]?.color == item.color && pieces[item.row + 2]?.[item.col + 2]?.color == item.color && pieces[item.row + 3]?.[item.col + 3]?.color == item.color && pieces[item.row + 4]?.[item.col + 4]?.color == item.color) {
                 gameResult = true
             }
             // 左上
-            if (pieces[item.row - 1][item.col - 1]?.color == item.color && pieces[item.row - 2][item.col - 2]?.color == item.color && pieces[item.row - 3][item.col - 3]?.color == item.color && pieces[item.row - 4][item.col - 4]?.color == item.color) {
+            if (pieces[item.row - 1]?.[item.col - 1]?.color == item.color && pieces[item.row - 2]?.[item.col - 2]?.color == item.color && pieces[item.row - 3]?.[item.col - 3]?.color == item.color && pieces[item.row - 4]?.[item.col - 4]?.color == item.color) {
                 gameResult = true
             }
             // 左下
-            if (pieces[item.row + 1][item.col - 1]?.color == item.color && pieces[item.row + 2][item.col - 2]?.color == item.color && pieces[item.row + 3][item.col - 3]?.color == item.color && pieces[item.row + 4][item.col - 4]?.color == item.color) {
+            if (pieces[item.row + 1]?.[item.col - 1]?.color == item.color && pieces[item.row + 2]?.[item.col - 2]?.color == item.color && pieces[item.row + 3]?.[item.col - 3]?.color == item.color && pieces[item.row + 4]?.[item.col - 4]?.color == item.color) {
                 gameResult = true
             }
         })
@@ -224,8 +228,40 @@ const Gobang = () => {
                 type: 'success',
                 content: victory + '胜利！！！',
             })
+            setShowOverlay(true)
         }
     }, [gameState])
+
+    // 电脑落子
+    const computerChess = () => {
+        // 电脑落子 利用算法————权重值
+        // 判断哪一点的值最高，也就是对电脑的利益最大
+        // 每下一步，就会判断某点对于玩家利益大还是自身利益大，来进行围堵和进攻
+        const playerScore: any = [];  	// 对于玩家而言，每一个空点的数值集合
+        const computerScore: any = [];	// 对于电脑而言，每一个空点的数值集合
+        let maxScore = 0;			// 最大值
+        let x = 0, y = 0;			// 最后决定电脑落子的位置
+
+        // 初始化玩家和电脑每个点的数值
+        for (let i = 0; i < 15; i++) {
+            playerScore[i] = [];
+            computerScore[i] = [];
+            for (let j = 0; j < 15; j++) {
+                playerScore[i][j] = 0;
+                computerScore[i][j] = 0;
+            }
+        }
+        console.log(pieces)
+
+    }
+    // 随机数
+    const Rand = (Min: number, Max: number) => {
+        switch (Min) {
+            case 0: return Math.round(Math.random() * Max);
+            case 1: return Math.ceil(Math.random() * Max);
+            default: return Math.round(Math.random() * (Max - Min) + Min);
+        }
+    }
 
     return (
         <div className='mainGobang'>
@@ -238,6 +274,7 @@ const Gobang = () => {
                     <p><AlertOutlined style={{ marginRight: 10, color: !rotationColor ? "red" : '' }} onClick={() => changeStartColor('white')} />白子</p>
                 </div>
                 <Button type="primary" onClick={again}>重新对局</Button>
+                <Button type="primary" onClick={computerChess}>测试按钮</Button>
             </div>
             <canvas className='contentGobang' id='gobang' onClick={(event) => handleBoardClick(event)} />
         </div>
