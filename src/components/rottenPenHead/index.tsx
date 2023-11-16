@@ -2,11 +2,12 @@ import FloatMenu from '../FloatMenu'
 import './index.scss'
 
 import React, { useState } from 'react';
-import { BgColorsOutlined, HighlightOutlined, UnderlineOutlined } from '@ant-design/icons';
+import { BulbOutlined, HighlightOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import PracticeUI from './PracticeUI';
 import FontComparison from './FontComparison';
+import BinarySearch from './BinarySearch';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -29,7 +30,9 @@ function getItem(
 const items: MenuItem[] = [
     getItem('UI组件练习', 'PracticeUI', <UnderlineOutlined />,),
     getItem('字体样式对比', 'FontComparison', <HighlightOutlined />,),
-    getItem('其他练习', 'other', <BgColorsOutlined />,),
+    getItem('新东西', 'NewKnowledge', <BulbOutlined />, [
+        getItem('二分查找', 'BinarySearch')
+    ]),
 ];
 
 export default function RottenPenHead() {
@@ -44,6 +47,7 @@ export default function RottenPenHead() {
     };
     const onClick: MenuProps['onClick'] = (e) => {
         setCurrent(e.key);
+        console.log(e.key)
     };
     return (
         <div className='page'>
@@ -68,8 +72,8 @@ export default function RottenPenHead() {
                     <div style={{ width: "100%", height: "100%", display: current == 'FontComparison' ? '' : 'none' }}>
                         <FontComparison />
                     </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'other' ? '' : 'none' }}>
-                        other
+                    <div style={{ width: "100%", height: "100%", display: current == 'BinarySearch' ? '' : 'none' }}>
+                        <BinarySearch />
                     </div>
                 </div>
             </div>

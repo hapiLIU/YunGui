@@ -280,7 +280,7 @@ const Gobang = () => {
                 }
             })
         })
-        console.log(computerScore)
+        // console.log(computerScore)
         // console.log(pieces)
 
         maxScore = Math.max(...computerScore.flat(Infinity));  //  获取最大值
