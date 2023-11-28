@@ -9,6 +9,7 @@ import Gobang from '../components/playGames/Gobang';
 import PlayingCards from '../components/playGames/PlayingCards';
 import RottenPenHead from '../components/rottenPenHead';
 import PracticeUI from '../components/rottenPenHead/PracticeUI';
+import TankBattle from '../components/playGames/TankBattle';
 
 export default function Router() {
     return (
@@ -22,6 +23,7 @@ export default function Router() {
                 <Route path="/sudoku/game/:modal" element={<SudokuGame />}></Route>
                 <Route path="/gobang" element={<Gobang />}></Route>
                 <Route path="/playingCards" element={<PlayingCards />}></Route>
+                <Route path="/tankBattle" element={<TankBattle />}></Route>
 
                 <Route path="/rottenPenHead" element={<RottenPenHead />}></Route>
             </Routes>

@@ -1,0 +1,26 @@
+.mainTankBattle {
+  width: 100vw;
+  min-width: 1920px;
+  height: 100vh;
+  min-height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .tankBattle-game {
+    width: 1000px;
+    height: 800px;
+    border: 1px solid;
+    position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    .tankDiv {
+      display: inline-block;
+      // border: 1px solid;
+      position: absolute;
+    }
+  }
+}
