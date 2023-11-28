@@ -14,79 +14,36 @@
     border-radius: 3px;
     overflow: hidden;
     position: relative;
-    .pattern1 {
+    .pattern {
       width: 10px;
       height: 2px;
-      background-color: rgb(240, 237, 234);
-      animation: rolling1 3s;
+      background-color: rgb(241, 206, 171);
+      animation: rolling 3s;
       animation-iteration-count: infinite; //  循环播放
       animation-timing-function: linear; //  匀速
       // animation-play-state: paused;  //  暂停
       position: absolute;
-      // top: 52px;
       left: 0px;
+    }
+    .pattern1 {
+      animation-delay: 2.5s;
     }
     .pattern2 {
-      width: 10px;
-      height: 2px;
-      background-color: rgb(240, 237, 234);
-      animation: rolling2 3s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      // animation-play-state: paused;
-      position: absolute;
-      // top: 52px;
-      left: 0px;
+      animation-delay: 1s;
+    }
+    .pattern3 {
+      animation-delay: 1.5s;
+    }
+    .pattern4 {
+      animation-delay: 0s;
     }
 
-    @keyframes rolling1 {
-      // from {
-      //   top: 52px;
-      // }
-      // to {
-      //   top: -2px;
-      // }
+    @keyframes rolling {
       0% {
-        top: 12px;
-      }
-      20% {
-        top: -8px;
-      }
-      21% {
-        background-color: #5c5c5c;
-        top: 52px;
-      }
-      22% {
-        background-color: rgb(240, 237, 234);
         top: 52px;
       }
       100% {
-        top: 12px;
-      }
-    }
-    @keyframes rolling2 {
-      // from {
-      //   top: 52px;
-      // }
-      // to {
-      //   top: -2px;
-      // }
-      0% {
-        top: 16px;
-      }
-      20% {
-        top: -4px;
-      }
-      21% {
-        background-color: #5c5c5c;
-        top: 56px;
-      }
-      22% {
-        background-color: rgb(240, 237, 234);
-        top: 56px;
-      }
-      100% {
-        top: 16px;
+        top: -2px;
       }
     }
   }

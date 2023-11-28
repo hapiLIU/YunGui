@@ -34,7 +34,8 @@ const Tank = (prop: any) => {
     return (
         <div className='mainTank' style={{ transform: `rotate(${rotateTank ? rotateTank : 0}deg)`, top: positionTop, left: positionLeft }}>
             <div className='tank-tire'>
-                <div className='pattern1' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
+                <div className='pattern pattern1' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
+                <div className='pattern pattern2' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
             </div>
             <div className='tank-fuselage'>
                 <div className='tank-Battery'>
@@ -46,7 +47,8 @@ const Tank = (prop: any) => {
             <div className='tank-cannonBarrel' style={{ transform: `rotate(${rotate ? rotate : 0}deg)` }}></div>
             <div className='tank-rearCabin'></div>
             <div className='tank-tire'>
-                <div className='pattern2' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
+                <div className='pattern pattern3' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
+                <div className='pattern pattern4' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>
             </div>
         </div>
     );
