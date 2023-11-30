@@ -24,6 +24,7 @@
       // animation-play-state: paused;  //  暂停
       position: absolute;
       left: 0px;
+      top: -2px;
     }
     .pattern1 {
       animation-delay: 2.5s;
@@ -96,6 +97,14 @@
     -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     // transition-timing-function: ease-in-out;
     // transform: rotate(30deg);
+
+    display: flex;
+    justify-content: center;
+
+    .tank-muzzle {
+      width: 1px;
+      height: 1px;
+    }
   }
   .tank-rearCabin {
     width: 18px;

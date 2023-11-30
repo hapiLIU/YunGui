@@ -15,6 +15,9 @@ const Tank = (prop: any) => {
         setIsMove(prop.isMove)
         getCoordinate()
     }, [prop])
+    useEffect(() => {
+        getMuzzle()
+    }, [prop.positionMuzzle])
 
     // 获取中心元素坐标
     const getCoordinate = () => {
@@ -23,12 +26,22 @@ const Tank = (prop: any) => {
         let rect = element?.getBoundingClientRect()
         let centerX = rect?.x
         let centerY = rect?.y
-        // console.log(centerX, centerY)
         prop.getConter(centerX, centerY)
+    }
+
+    // 获取炮口元素坐标
+    const getMuzzle = () => {
+        // 获取元素  
+        let element = document.getElementById('muzzle');
+        let rect = element?.getBoundingClientRect()
+        let centerX = rect?.x
+        let centerY = rect?.y
+        prop.getMuzzle(centerX, centerY)
     }
 
     useEffect(() => {
         getCoordinate()
+        getMuzzle()
     }, [])
 
     return (
@@ -44,7 +57,9 @@ const Tank = (prop: any) => {
                     </div>
                 </div>
             </div>
-            <div className='tank-cannonBarrel' style={{ transform: `rotate(${rotate ? rotate : 0}deg)` }}></div>
+            <div className='tank-cannonBarrel' style={{ transform: `rotate(${rotate ? rotate : 0}deg)` }}>
+                <div className='tank-muzzle' id='muzzle'></div>
+            </div>
             <div className='tank-rearCabin'></div>
             <div className='tank-tire'>
                 <div className='pattern pattern3' style={{ animationPlayState: isMove ? 'running' : 'paused' }}></div>

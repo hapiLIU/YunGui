@@ -11,15 +11,10 @@
   .tankBattle-game {
     width: 1000px;
     height: 800px;
-    border: 1px solid;
+    border: 10px solid #351d01;
     position: relative;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
     .tankDiv {
       display: inline-block;
-      // border: 1px solid;
       position: absolute;
     }
   }

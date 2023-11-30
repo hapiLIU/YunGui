@@ -1,0 +1,10 @@
+.mainBullet {
+  width: 3px;
+  height: 8px;
+  border-radius: 3px 3px 0 0;
+
+  position: absolute;
+
+  animation-iteration-count: infinite; //  循环播放
+  animation-timing-function: linear; //  匀速
+}

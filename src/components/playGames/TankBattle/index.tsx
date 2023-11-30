@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './index.scss';
 import Tank from './tank';
+import Bullet from './bullet';
+import ReactDOM from 'react-dom';
 
 const TankBattle = () => {
     const [mouseMove, setMouseMove] = useState({ x: 0, y: 0 })
+    // console.log(mouseMove)
     const [rotate, setRotate] = useState<number>(0) // 传给子元素的炮杆夹角角度
     const [rotateTank, setRotateTank] = useState(0) // tank角度
     const [centerX, setCenterX] = useState<number>(0) // tank中心的坐标
@@ -12,14 +15,17 @@ const TankBattle = () => {
     const [positionLeft, setPositionLeft] = useState<number>(0) // tank位置
     const [positionTop, setPositionTop] = useState<number>(0) // tank位置
 
-    const [isMove, setIsMove] = useState<boolean>(true) // 按键按下移动,松开停止
+    const [isMove, setIsMove] = useState<boolean>(false) // 按键按下移动,松开停止
+
+    const [positionMuzzle, setPositionMuzzle] = useState<any>({ x: 0, y: 0 }) // 炮口坐标位置
+
+    const [elements, setElements] = useState<any>([]);
 
     // 鼠标移动计算夹角角度
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         const { clientX, clientY } = event;
         setMouseMove({ x: clientX, y: clientY })
         setRotate(calculateAngle(centerX, centerY, clientX, clientY))
-
     };
 
     // 计算弧度
@@ -35,6 +41,10 @@ const TankBattle = () => {
     const changeConter = (x: number, y: number) => {
         setCenterX(x);
         setCenterY(y);
+    }
+    // 改变炮口坐标
+    const changeMuzzle = (x: number, y: number) => {
+        setPositionMuzzle({ x, y })
     }
 
     // 捕获按键按下
@@ -87,12 +97,24 @@ const TankBattle = () => {
         setIsMove(false)
     }
 
+    // 鼠标按下射出炮弹
+    const transmit = () => {
+        // const element = document.getElementById('aaa')
+        // ReactDOM.render(React.createElement('Bullet', { positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: "#000" }), element)
+        // ReactDOM.render(<Bullet positionMuzzle={positionMuzzle} mouseMove={mouseMove} color={"#000"} />, element)
+        setElements([...elements, { key: Date.now(), positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: '#000' }])
+    }
+
     return (
         <div className='mainTankBattle'>
-            <div className='tankBattle-game' id='gameArea' onMouseMove={handleMouseMove}>
+            <div className='tankBattle-game' id='gameArea' onMouseMove={handleMouseMove} onClick={transmit}>
                 <div className='tankDiv' id='tank'>
-                    <Tank rotate={rotate} rotateTank={rotateTank} positionTop={positionTop} positionLeft={positionLeft} isMove={isMove} getConter={(x: number, y: number) => { changeConter(x, y) }} />
+                    <Tank rotate={rotate} rotateTank={rotateTank} positionTop={positionTop} positionLeft={positionLeft} isMove={isMove} getConter={(x: number, y: number) => { changeConter(x, y) }} getMuzzle={(x: number, y: number) => { changeMuzzle(x, y) }} />
                 </div>
+                {elements.map((item: any) => (
+                    <Bullet key={item.key} positionMuzzle={item.positionMuzzle} mouseMove={item.mouseMove} color={item.color} />
+                ))}
+                {/* <Bullet positionMuzzle={positionMuzzle} mouseMove={mouseMove} color={"#000"} /> */}
             </div>
         </div>
     );
