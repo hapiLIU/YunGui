@@ -26,6 +26,13 @@ const TankBattle = () => {
         const { clientX, clientY } = event;
         setMouseMove({ x: clientX, y: clientY })
         setRotate(calculateAngle(centerX, centerY, clientX, clientY))
+
+        // 获取元素  
+        let element = document.getElementById('muzzle');
+        let rect = element?.getBoundingClientRect()
+        let muzzleCenterX = rect?.x
+        let muzzleCenterY = rect?.y
+        changeMuzzle(muzzleCenterX!, muzzleCenterY!)
     };
 
     // 计算弧度
@@ -99,9 +106,7 @@ const TankBattle = () => {
 
     // 鼠标按下射出炮弹
     const transmit = () => {
-        // const element = document.getElementById('aaa')
-        // ReactDOM.render(React.createElement('Bullet', { positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: "#000" }), element)
-        // ReactDOM.render(<Bullet positionMuzzle={positionMuzzle} mouseMove={mouseMove} color={"#000"} />, element)
+        console.log(mouseMove)
         setElements([...elements, { key: Date.now(), positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: '#000' }])
     }
 
@@ -112,9 +117,8 @@ const TankBattle = () => {
                     <Tank rotate={rotate} rotateTank={rotateTank} positionTop={positionTop} positionLeft={positionLeft} isMove={isMove} getConter={(x: number, y: number) => { changeConter(x, y) }} getMuzzle={(x: number, y: number) => { changeMuzzle(x, y) }} />
                 </div>
                 {elements.map((item: any) => (
-                    <Bullet key={item.key} positionMuzzle={item.positionMuzzle} mouseMove={item.mouseMove} color={item.color} />
+                    <Bullet key={item.key} index={item.key} positionMuzzle={item.positionMuzzle} mouseMove={item.mouseMove} color={item.color} />
                 ))}
-                {/* <Bullet positionMuzzle={positionMuzzle} mouseMove={mouseMove} color={"#000"} /> */}
             </div>
         </div>
     );
