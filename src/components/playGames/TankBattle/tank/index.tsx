@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './index.scss';
 
 const Tank = (prop: any) => {
@@ -13,36 +13,7 @@ const Tank = (prop: any) => {
         setPositionLeft(prop.positionLeft)
         setPositionTop(prop.positionTop)
         setIsMove(prop.isMove)
-        getCoordinate()
     }, [prop])
-    useEffect(() => {
-        getMuzzle()
-    }, [prop.positionMuzzle])
-
-    // 获取中心元素坐标
-    const getCoordinate = () => {
-        // 获取元素  
-        let element = document.getElementById('centerPoint');
-        let rect = element?.getBoundingClientRect()
-        let centerX = rect?.x
-        let centerY = rect?.y
-        prop.getConter(centerX, centerY)
-    }
-
-    // 获取炮口元素坐标
-    const getMuzzle = () => {
-        // 获取元素  
-        let element = document.getElementById('muzzle');
-        let rect = element?.getBoundingClientRect()
-        let centerX = rect?.x
-        let centerY = rect?.y
-        prop.getMuzzle(centerX, centerY)
-    }
-
-    useEffect(() => {
-        getCoordinate()
-        getMuzzle()
-    }, [])
 
     return (
         <div className='mainTank' style={{ transform: `rotate(${rotateTank ? rotateTank : 0}deg)`, top: positionTop, left: positionLeft }}>

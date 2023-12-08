@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './index.scss';
 import { animated, useSpring } from '@react-spring/web'
 
