@@ -66,11 +66,15 @@ const TankBattle = () => {
     }
 
     // 捕获按键按下
+    const [isContinuousFiring, setIsContinuousFiring] = useState<boolean>(false)
     document.onkeydown = (e) => {
         getMuzzle()
         getCoordinate()
         switch (e.keyCode) {
-            case 38:
+            case 32:    //  空格
+                setIsContinuousFiring(true)
+                break;
+            case 38:    //  上箭头
                 if (rotateTank == 0) {
                     // 不转
                 } else if (rotateTank == 90) {
@@ -84,7 +88,7 @@ const TankBattle = () => {
                 setRotateTank(0)
                 setIsMove(true)
                 break;
-            case 87:
+            case 87:    //  W
                 if (rotateTank == 0) {
                     // 不转
                 } else if (rotateTank == 90) {
@@ -98,7 +102,7 @@ const TankBattle = () => {
                 setRotateTank(0)
                 setIsMove(true)
                 break;
-            case 40:
+            case 40:    //  下箭头
                 if (rotateTank == 0) {
                     setRotate(rotate + 180)
                 } else if (rotateTank == 90) {
@@ -112,7 +116,7 @@ const TankBattle = () => {
                 setRotateTank(180)
                 setIsMove(true)
                 break;
-            case 83:
+            case 83:    //  S
                 if (rotateTank == 0) {
                     setRotate(rotate + 180)
                 } else if (rotateTank == 90) {
@@ -126,7 +130,7 @@ const TankBattle = () => {
                 setRotateTank(180)
                 setIsMove(true)
                 break;
-            case 37:
+            case 37:    //  左箭头
                 if (rotateTank == 0) {
                     setRotate(rotate + 90)
                 } else if (rotateTank == 90) {
@@ -140,7 +144,7 @@ const TankBattle = () => {
                 setRotateTank(270)
                 setIsMove(true)
                 break;
-            case 65:
+            case 65:    //  A
                 if (rotateTank == 0) {
                     setRotate(rotate + 90)
                 } else if (rotateTank == 90) {
@@ -154,7 +158,7 @@ const TankBattle = () => {
                 setRotateTank(270)
                 setIsMove(true)
                 break;
-            case 39:
+            case 39:    //  右箭头
                 if (rotateTank == 0) {
                     setRotate(rotate - 90)
                 } else if (rotateTank == 90) {
@@ -168,7 +172,7 @@ const TankBattle = () => {
                 setRotateTank(90)
                 setIsMove(true)
                 break;
-            case 68:
+            case 68:    //  D
                 if (rotateTank == 0) {
                     setRotate(rotate - 90)
                 } else if (rotateTank == 90) {
@@ -185,40 +189,32 @@ const TankBattle = () => {
         }
     }
     // 捕获按键松开
-    document.onkeyup = () => {
+    document.onkeyup = (e) => {
         setIsMove(false)
+        if (e.keyCode == 32) {
+            setIsContinuousFiring(false)
+        }
     }
 
     // 鼠标按下射出炮弹
-    const [isLongPressed, setIsLongPressed] = useState(false);
-    const timerId = useRef<any>(null);
     const transmit = () => {
-        console.log(mouseMove)
         setElements([...elements, { key: Date.now(), positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: '#000' }])
     }
-    const handleMouseDown = () => {
-        clearTimeout(timerId.current!);
 
-        timerId.current = setTimeout(() => {
-            setIsLongPressed(true);
-
-            // 在此处添加长按后的逻辑或者调用其他函数
-        }, 500); // 设置长按时间限制，单位为ms
-    };
-    const handleMouseUp = () => {
-        clearTimeout(timerId.current!);
-        setIsLongPressed(false);
-    };
+    // 弹幕连射
     useEffect(() => {
-        if (isLongPressed) {
-
+        if (isContinuousFiring) {
+            const intervalId = setInterval(() => {
+                transmit()
+            }, 100)
+            return () => clearInterval(intervalId); // 清除定时器  
         }
-    }, [isLongPressed])
+    }, [isContinuousFiring])
 
 
     return (
         <div className='mainTankBattle'>
-            <div className='tankBattle-game' id='gameArea' onMouseMove={handleMouseMove} onClick={transmit} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+            <div className='tankBattle-game' id='gameArea' onMouseMove={handleMouseMove} onClick={transmit}>
                 <div className='tankDiv' id='tank'>
                     <Tank rotate={rotate} rotateTank={rotateTank} positionTop={positionTop} positionLeft={positionLeft} isMove={isMove} getConter={(x: number, y: number) => { changeConter(x, y) }} getMuzzle={(x: number, y: number) => { changeMuzzle(x, y) }} />
                 </div>

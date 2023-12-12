@@ -13,6 +13,8 @@
     height: 800px;
     border: 10px solid #351d01;
     position: relative;
+
+    overflow: hidden;
     .tankDiv {
       display: inline-block;
       position: absolute;
