@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 import Tank from './tank';
 import Bullet from './bullet';
@@ -66,14 +66,11 @@ const TankBattle = () => {
     }
 
     // 捕获按键按下
-    const [isContinuousFiring, setIsContinuousFiring] = useState<boolean>(false)
+    const [isFiring, setIsFiring] = useState<boolean>(true)
     document.onkeydown = (e) => {
         getMuzzle()
         getCoordinate()
         switch (e.keyCode) {
-            case 32:    //  空格
-                setIsContinuousFiring(true)
-                break;
             case 38:    //  上箭头
                 if (rotateTank == 0) {
                     // 不转
@@ -191,25 +188,25 @@ const TankBattle = () => {
     // 捕获按键松开
     document.onkeyup = (e) => {
         setIsMove(false)
-        if (e.keyCode == 32) {
-            setIsContinuousFiring(false)
-        }
     }
 
     // 鼠标按下射出炮弹
     const transmit = () => {
-        setElements([...elements, { key: Date.now(), positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: '#000' }])
+        if (isFiring) {
+            setElements([...elements, { key: Date.now(), positionMuzzle: positionMuzzle, mouseMove: mouseMove, color: '#000' }])
+            setIsFiring(false)
+        }
     }
 
-    // 弹幕连射
+    // 装填冷却
     useEffect(() => {
-        if (isContinuousFiring) {
-            const intervalId = setInterval(() => {
-                transmit()
-            }, 100)
+        if (!isFiring) {
+            const intervalId = setTimeout(() => {
+                setIsFiring(true)
+            }, 1000)
             return () => clearInterval(intervalId); // 清除定时器  
         }
-    }, [isContinuousFiring])
+    }, [isFiring])
 
 
     return (
@@ -222,6 +219,7 @@ const TankBattle = () => {
                     <Bullet key={item.key} index={item.key} positionMuzzle={item.positionMuzzle} mouseMove={item.mouseMove} color={item.color} />
                 ))}
             </div>
+            <div className='tankInformations'>{isFiring ? '是' : "否"}</div>
         </div>
     );
 }
