@@ -11,6 +11,7 @@ import RottenPenHead from '../components/rottenPenHead';
 import PracticeUI from '../components/rottenPenHead/PracticeUI';
 import TankBattle from '../components/playGames/TankBattle';
 import ThreeJs from '../components/threeJs';
+import ThreeJsTestOne from '../components/threeJs/testOne';
 
 export default function Router() {
     return (
@@ -29,6 +30,7 @@ export default function Router() {
                 <Route path="/rottenPenHead" element={<RottenPenHead />}></Route>
 
                 <Route path="/threejs" element={<ThreeJs />}></Route>
+                <Route path="/threejs/testOne" element={<ThreeJsTestOne />}></Route>
             </Routes>
         </BrowserRouter>
     );
