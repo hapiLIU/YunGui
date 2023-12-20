@@ -1,0 +1,13 @@
+.threeTwoMain {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  .testBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
