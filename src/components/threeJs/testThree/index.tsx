@@ -1,9 +1,11 @@
 import * as THREE from 'three';
 import './index.scss'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { Button, Input } from 'antd';
 
 export default function ThreeJsTestThree() {
+    const [lightColor, setLightColor] = useState("aqua")
 
     // 基础threejs写法
     // useEffect(() => {
@@ -148,14 +150,8 @@ export default function ThreeJsTestThree() {
         pointMaterial.size = 0.1;
         pointMaterial.vertexColors = true;
         pointMaterial.color = new THREE.Color("rgb(255,255,255)");
-        // const textureLoader = new THREE.TextureLoader()
-        // const texture = textureLoader.load("./image/点_dot.png");
         // 创建点
         const points = new THREE.Points(pointBuffer, pointMaterial);
-        // 贴图
-        // pointMaterial.map = texture
-        // pointMaterial.alphaMap = texture
-        // pointMaterial.transparent = true
         // 控制是否将对象的深度值写入深度缓冲区
         pointMaterial.depthWrite = false;
         //重叠部分 混合模式
@@ -175,7 +171,7 @@ export default function ThreeJsTestThree() {
             let time = clock.getDelta()
             points.position.x += time;
             // 加个边界判断，不然一会就都飞出去了。
-            if (points.position.x > 50) {
+            if (points.position.x > 40) {
                 points.position.x = 0;
             }
             points.rotation.x += time * 0.1;
@@ -189,7 +185,40 @@ export default function ThreeJsTestThree() {
         renderer.render(scene, camera)
     }, [])
 
+    // document.getElementById("run1").addEventListener('animationend', () => {
+    //     console.log('11')
+    // })
+    useEffect(() => {
+        setTimeout(() => {
+            // let str = "#"
+            // let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+            // for (let i = 0; i < 6; i++) {
+            //     str += arr[Math.floor(Math.random() * 16)];
+            // }
+            // setLightColor(str)
+
+            let r = Math.round(Math.random() * 255);
+            let g = Math.round(Math.random() * 255);
+            let b = Math.round(Math.random() * 255);
+            setLightColor(`rgb(${r},${g},${b})`)
+        }, 990)
+    }, [lightColor])
+
     return (
-        <div className='threeThreeMain' id='threeThreeMain'></div>
+        <div className='threeThreeMain' id='threeThreeMain'>
+            <div className='box'>
+                <span style={{ color: "#fff", fontSize: "24px", marginTop: '10px' }}>欢迎登录</span>
+                <Input style={{ width: "70%" }} placeholder="账户" />
+                <Input.Password style={{ width: "70%" }} placeholder="密码" />
+                <div className='btn'>
+                    <Button ghost>注册账户</Button>
+                    <Button ghost>登录</Button>
+                </div>
+                <div id='run1' className='run1' style={{ backgroundColor: lightColor }}></div>
+                <div className='run2' style={{ backgroundColor: lightColor }}></div>
+                <div className='run3' style={{ backgroundColor: lightColor }}></div>
+                <div className='run4' style={{ backgroundColor: lightColor }}></div>
+            </div>
+        </div>
     )
 }
