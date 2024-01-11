@@ -52,21 +52,27 @@ export default function ChatRoom() {
             setWS(new WebSocket('ws://localhost:1234/ws'));
             let wss = new WebSocket('ws://localhost:1234/ws')
             wss.onopen = (params) => {
-                outPut({
+                // outPut({
+                //     type: 'system',
+                //     data: `${name.current ? name.current : ''}加入聊天`,
+                // })
+                wss.send(JSON.stringify({
                     type: 'system',
-                    data: '我加入聊天',
-                })
-                roomPeople.current = [...roomPeople.current, { name: name.current, color: color.current, }]
+                    data: `加入聊天`,
+                    name: name.current,
+                    color: color.current
+                }))
                 setIsJoin(true)
             };
             wss.onmessage = (e) => {
                 const message = JSON.parse(e.data)
+                console.log(message)
                 if (message?.type == 'init') {
                     identifiers.current = message.identifier
                 } else {
                     outPut({
                         ...message,
-                        type: message.identifier == identifiers.current ? 'me' : 'people',
+                        type: message.type ? message.type : (message.identifier == identifiers.current ? 'me' : 'people'),
                         name: message.name,
                         color: message.color
                     })
@@ -93,6 +99,11 @@ export default function ChatRoom() {
             })
             setIsJoin(true)
         }
+    }
+
+    // 退出聊天室
+    const exitBtnClick = () => {
+
     }
 
     // 点击发送按钮，发送消息
@@ -129,9 +140,22 @@ export default function ChatRoom() {
 
     useEffect(() => {
         setRefresh(!refresh)
+        // 控制聊天消息最新
         let inforBox = document.getElementById("inforBox");
         inforBox!.scrollTop = inforBox?.scrollHeight ?? 0;
+        // 加入人员头像展示
+        roomPeople.current = []
+        list.current.forEach(item => {
+            if (item.type == "system" && item.data == "加入聊天") {
+                // roomPeople.current = [...roomPeople.current, { name: item.name, color: item.color, identifiers: item.identifier }]
+                roomPeople.current.push({ name: item.name, color: item.color, identifiers: item.identifier })
+            }
+        })
     }, [list.current])
+
+    const aaa = () => {
+
+    }
 
     return (
         <div className='chatRoom-page'>
@@ -140,7 +164,7 @@ export default function ChatRoom() {
                 <div className='avatar'>
                     <Avatar.Group>
                         {roomPeople.current.map((item) => {
-                            return <Avatar style={{ backgroundColor: item.color }}>{item.name}</Avatar>
+                            return <Avatar style={{ backgroundColor: item.color }}>{item.name ? item.name : item.identifier}</Avatar>
                         })}
                     </Avatar.Group>
                 </div>
@@ -159,13 +183,13 @@ export default function ChatRoom() {
                                 </div>
                             </div>
                             <div className="ava">
-                                <Avatar style={{ backgroundColor: item.color, verticalAlign: 'middle' }} size="large" gap={0}>{item.name}</Avatar>
+                                <Avatar style={{ backgroundColor: item.color, verticalAlign: 'middle' }} size="large" gap={0}>{item.name ? item.name : item.identifier}</Avatar>
                             </div>
                         </div>
                     ) : (item.type == 'people' ? (
                         <div className="left">
                             <div className="ava">
-                                <Avatar style={{ backgroundColor: item.color, verticalAlign: 'middle' }} size="large" gap={0}>{item.name}</Avatar>
+                                <Avatar style={{ backgroundColor: item.color, verticalAlign: 'middle' }} size="large" gap={0}>{item.name ? item.name : item.identifier}</Avatar>
                             </div>
                             <div className="info">
                                 <span>{item.name ? item.name : item.identifier}</span>
@@ -177,12 +201,12 @@ export default function ChatRoom() {
                                 </div>
                             </div>
                         </div>
-                    ) : (<div className="center">{item.data}</div>)))
+                    ) : (<div className="center">{item.name ? item.name : item.identifier}{item.data}</div>)))
                 })}
             </div>
             <div className='actionBox'>
                 <div className='btnGroup'>
-                    {/* <Button id="connectBtn" disabled={!isJoin}>退出聊天室</Button> */}
+                    {/* <Button onClick={exitBtnClick} disabled={!isJoin}>退出聊天室</Button> */}
                     <Button id="connectBtn" onClick={connectBtnClick} disabled={isJoin}>进入聊天室</Button>
                     <div className='inputAndColor'>
                         <span>昵称：</span><Input style={{ width: "50%" }} maxLength={4} placeholder='最大4个字符' onChange={(e) => name.current = e.target.value} disabled={isJoin} />
@@ -191,9 +215,10 @@ export default function ChatRoom() {
                         <span>头像颜色：</span><ColorPicker defaultValue={'#1677FF'} showText onChange={(e) => { color.current = e.toHexString() }} disabled={isJoin} />
                     </div>
                     <Button id="sendBtn" onClick={sendBtnClick} disabled={inputValue ? false : true}>发送</Button>
+                    <Button onClick={aaa}>测试</Button>
                 </div>
                 {/* <Input id="chat" placeholder="发送消息" onChange={(e) => { setInputValue(e.target.value) }} value={inputValue}  /> */}
-                <TextArea id="chat" autoSize={{ minRows: 3, maxRows: 6 }} placeholder="发送消息，按shift+回车换行" onChange={(e) => { setInputValue(e.target.value) }} value={inputValue} onKeyDown={(e) => handleKeyDown(e)} />
+                <TextArea id="chat" autoSize={{ minRows: 3, maxRows: 6 }} placeholder=" Enter 发送消息，按 Shift + Enter 换行" onChange={(e) => { setInputValue(e.target.value) }} value={inputValue} onKeyDown={(e) => handleKeyDown(e)} />
             </div>
         </div>
     )

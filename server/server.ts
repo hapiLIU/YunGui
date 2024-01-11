@@ -1,12 +1,14 @@
 const webSocket = require("ws");
 const http = require("http");
 const express = require("express");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 
 // 创建一个HTTP服务器
 const server = http.createServer(app);
 
-// 存储每个客户端的标识
+// 存储每个客户端的标识和WebSocket连接
 const clients = new Map();
 
 // 创建WebSocket服务器并将其附加到HTTP服务器
@@ -50,8 +52,9 @@ wss.on("connection", (socket, request) => {
       if (client.readyState === webSocket.OPEN) {
         client.send(
           JSON.stringify({
+            type,
             ip: clientIP,
-            identifier,
+            identifier: identifier ? identifier : clientId,
             data,
             color,
             name,
@@ -60,17 +63,9 @@ wss.on("connection", (socket, request) => {
       }
     });
   });
-
-  wss.on("error", (message) => {
-    console.log("报错了");
-  });
-  wss.on("close", (message) => {
-    console.log("连接关闭：");
-    // 移除客户端的标识符
+  // 监听客户端关闭
+  socket.on("close", () => {
     clients.delete(clientId);
-  });
-  wss.on("open", (message) => {
-    console.log("open", message);
   });
 });
 
