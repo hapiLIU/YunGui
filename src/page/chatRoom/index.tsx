@@ -2,6 +2,7 @@ import './index.scss'
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Avatar, Button, ColorPicker, Form, Input, Modal } from 'antd';
+import FloatMenu from '../../components/FloatMenu';
 const { TextArea } = Input;
 
 interface inforList {
@@ -220,6 +221,7 @@ export default function ChatRoom() {
                 {/* <Input id="chat" placeholder="发送消息" onChange={(e) => { setInputValue(e.target.value) }} value={inputValue}  /> */}
                 <TextArea id="chat" autoSize={{ minRows: 3, maxRows: 6 }} placeholder=" Enter 发送消息，按 Shift + Enter 换行" onChange={(e) => { setInputValue(e.target.value) }} value={inputValue} onKeyDown={(e) => handleKeyDown(e)} />
             </div>
+            <FloatMenu />
         </div>
     )
 }

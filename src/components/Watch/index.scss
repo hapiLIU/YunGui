@@ -1,0 +1,31 @@
+.clock {
+  font-family: Orbitron;
+  letter-spacing: 7px;
+
+  .YMD {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  .HMS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    div {
+      width: 150px;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4.5rem;
+      }
+    }
+  }
+}

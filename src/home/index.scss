@@ -2,36 +2,23 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  .menuBtn {
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 48px;
+  .time {
+    width: 50vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-}
-:root {
-  --hue: 223;
-  --bg: hsl(var(--hue), 10%, 90%);
-  --fg: hsl(var(--hue), 10%, 10%);
-  --light-sh: hsla(var(--hue), 10%, 95%, 0.5);
-  --dark-sh: hsla(var(--hue), 10%, 15%, 0.4);
-  --primary: hsl(var(--hue), 90%, 50%);
-  --primary-t: hsla(var(--hue), 90%, 50%, 0);
-  --trans-dur: 0.3s;
-  // font-size: 40px;
-}
-body,
-input {
-  font: 1em/1.5 sans-serif;
-}
-body {
-  background-color: var(--bg);
-  color: var(--fg);
-  display: flex;
-  height: 100vh;
-  transition: background-color var(--trans-dur), color var(--trans-dur);
+  .content {
+    width: 80vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
