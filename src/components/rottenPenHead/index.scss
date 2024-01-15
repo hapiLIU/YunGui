@@ -12,9 +12,15 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-family: STXingkai;
-    font-size: 40px;
     z-index: 9999999;
+    .title {
+      font-size: 40px;
+    }
+    .remark {
+      font-size: 24px;
+    }
   }
 
   .content {

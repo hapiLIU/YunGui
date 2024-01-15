@@ -1,13 +1,15 @@
 import FloatMenu from '../FloatMenu'
 import './index.scss'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BulbOutlined, HighlightOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import PracticeUI from './PracticeUI';
 import FontComparison from './FontComparison';
 import BinarySearch from './BinarySearch';
+
+import remarkData from './remark.json'
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -41,18 +43,27 @@ export default function RottenPenHead() {
     const [current, setCurrent] = useState('PracticeUI');
     const [collapsed, setCollapsed] = useState(false);
 
+    const [randomRemark, setRandomRemark] = useState('')
+
     // 导航栏及其他数据所使用方法
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
     const onClick: MenuProps['onClick'] = (e) => {
         setCurrent(e.key);
-        console.log(e.key)
     };
+
+    useEffect(() => {
+        let num = remarkData.remark.length
+        let random = Math.floor(Math.random() * num)
+        setRandomRemark(remarkData.remark[random])
+    }, [])
+
     return (
         <div className='page'>
             <div className='top'>
-                好记性不如烂笔头
+                <div className="title">好记性不如烂笔头</div>
+                <div className="remark">{randomRemark}</div>
             </div>
             <div className='content'>
                 <div className='RottenPenHead-menu'>
