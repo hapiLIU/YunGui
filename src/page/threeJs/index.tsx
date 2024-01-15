@@ -1,4 +1,4 @@
-import FloatMenu from '../FloatMenu'
+import FloatMenu from '../../components/FloatMenu'
 import './index.scss'
 
 import { Button } from 'antd';

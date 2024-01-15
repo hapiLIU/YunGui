@@ -1,20 +1,19 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Minesweeper from '../components/playGames/Minesweeper';
-import MinesweeperGame from '../components/playGames/Minesweeper/game';
-import Home from '../components/home';
-import Sudoku from '../components/playGames/Sudoku';
-import SudokuGame from '../components/playGames/Sudoku/game';
-import Gobang from '../components/playGames/Gobang';
-import PlayingCards from '../components/playGames/PlayingCards';
-import RottenPenHead from '../components/rottenPenHead';
-import PracticeUI from '../components/rottenPenHead/PracticeUI';
-import TankBattle from '../components/playGames/TankBattle';
-import ThreeJs from '../components/threeJs';
-import ThreeJsTestOne from '../components/threeJs/testOne';
-import ThreeJsTestTwo from '../components/threeJs/testTwo';
-import ThreeJsTestThree from '../components/threeJs/testThree';
-import ChatRoom from '../components/chatRoom';
+import Minesweeper from '../page/playGames/Minesweeper';
+import MinesweeperGame from '../page/playGames/Minesweeper/game';
+import Home from '../home';
+import Sudoku from '../page/playGames/Sudoku';
+import SudokuGame from '../page/playGames/Sudoku/game';
+import Gobang from '../page/playGames/Gobang';
+import PlayingCards from '../page/playGames/PlayingCards';
+import RottenPenHead from '../page/rottenPenHead';
+import TankBattle from '../page/playGames/TankBattle';
+import ThreeJs from '../page/threeJs';
+import ThreeJsTestOne from '../page/threeJs/testOne';
+import ThreeJsTestTwo from '../page/threeJs/testTwo';
+import ThreeJsTestThree from '../page/threeJs/testThree';
+import ChatRoom from '../page/chatRoom';
 
 export default function Router() {
     return (
