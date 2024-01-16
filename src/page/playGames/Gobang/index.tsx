@@ -45,6 +45,15 @@ const Gobang = () => {
     const [whitePieces, setWhitePieces] = useState<Gobang[]>([])    // 白子
     const [victory, setVictory] = useState<string | null>(null)
 
+    const [isClick, setIsClick] = useState<boolean>(true)  //  用户是否可以点击
+    useEffect(() => {
+        if (isClick == false) {
+            setTimeout(() => {
+                setIsClick(!isClick)
+            }, 1000);
+        }
+    }, [isClick])
+
     useEffect(() => {
         const canvas = document.getElementById('gobang') as HTMLCanvasElement;
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -112,6 +121,7 @@ const Gobang = () => {
 
     // 根据落子位置处理数据绘制棋子
     const handleBoardClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+        setIsClick(false)
         const canvas = event.currentTarget;
         const rect = canvas.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -457,7 +467,7 @@ const Gobang = () => {
                 <Button type="primary" onClick={again}>重新对局</Button>
                 <Button type="primary" onClick={computerChess}>测试按钮</Button>
             </div>
-            <canvas className='contentGobang' id='gobang' onClick={(event) => handleBoardClick(event)} />
+            <canvas className='contentGobang' id='gobang' onClick={isClick ? (event) => handleBoardClick(event) : () => { }} />
         </div>
     );
 }
