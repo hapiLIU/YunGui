@@ -2,14 +2,15 @@ import FloatMenu from '../../components/FloatMenu'
 import './index.scss'
 
 import React, { useEffect, useState } from 'react';
-import { BulbOutlined, HighlightOutlined, UnderlineOutlined } from '@ant-design/icons';
+import { BulbOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import PracticeUI from './PracticeUI';
 import FontComparison from './FontComparison';
-import BinarySearch from './BinarySearch';
 
 import remarkData from './remark.json'
+
+import ReadMarkDown from './ReadMarkDown';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -32,9 +33,8 @@ function getItem(
 const items: MenuItem[] = [
     getItem('UI组件练习', 'PracticeUI', <UnderlineOutlined />,),
     getItem('字体样式对比', 'FontComparison', <HighlightOutlined />,),
-    getItem('新东西', 'NewKnowledge', <BulbOutlined />, [
-        getItem('二分查找', 'BinarySearch')
-    ]),
+    getItem('MarkDown', 'markdown', <FileTextOutlined />,),
+    getItem('测试', 'test', <QuestionCircleOutlined />,),
 ];
 
 export default function RottenPenHead() {
@@ -58,6 +58,10 @@ export default function RottenPenHead() {
         let random = Math.floor(Math.random() * num)
         setRandomRemark(remarkData.remark[random])
     }, [])
+
+    const MyComponent = async () => {
+
+    };
 
     return (
         <div className='page'>
@@ -83,8 +87,11 @@ export default function RottenPenHead() {
                     <div style={{ width: "100%", height: "100%", display: current == 'FontComparison' ? '' : 'none' }}>
                         <FontComparison />
                     </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'BinarySearch' ? '' : 'none' }}>
-                        <BinarySearch />
+                    <div style={{ width: "100%", height: "100%", display: current == 'markdown' ? '' : 'none' }}>
+                        <ReadMarkDown />
+                    </div>
+                    <div style={{ width: "100%", height: "100%", display: current == 'test' ? '' : 'none' }}>
+                        <Button onClick={MyComponent}>测试</Button>
                     </div>
                 </div>
             </div>
