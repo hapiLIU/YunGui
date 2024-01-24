@@ -11,8 +11,33 @@ import tankBattle from '../image/坦克.jpg'
 import rottenPenHead from '../image/练习.jpg'
 import threejs from '../image/threejs.jpg'
 import chatRoom from '../image/聊天.jpg'
+import { useEffect, useState } from 'react'
+import { useHolidayAndSolarTerm } from '../services/hooks/perpetualCalendar'
 
 export default function Home() {
+
+    const [icons, setIcons] = useState<any[]>(["🎈", "🌹", "🌸", "🌷", "🌺"])
+    let date = new Date();
+    let a = useHolidayAndSolarTerm(date)
+    console.log(a)
+
+    useEffect(() => {
+        const createRainName = () => {
+            let span = document.createElement("span");
+            span.className = "iconRain";
+            span.textContent = icons[Math.floor(Math.random() * icons.length)];
+            span.style.left = (Math.random() * (window.innerWidth - span.offsetWidth - 50)) + "px";
+            span.style.animationDelay = (Math.random() * 3) + "s";
+            span.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.querySelector(".menu")!.appendChild(span);
+        }
+        let numberOfNames = 20;
+        for (let i = 0; i < numberOfNames; i++) {
+            createRainName();
+        }
+    }, [])
+
     return (
         <div className='menu'>
             <div className='time'>

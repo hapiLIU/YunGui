@@ -5,6 +5,8 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  overflow: hidden;
   .time {
     width: 50vw;
     height: 60vh;
@@ -20,5 +22,30 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .iconRain {
+    position: absolute;
+    top: -50px;
+    color: #000;
+    font-size: 24px;
+    animation: rain 3s linear infinite;
+    z-index: -1000;
+  }
+
+  @keyframes rain {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(90vh);
+      opacity: 0;
+    }
   }
 }
