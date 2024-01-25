@@ -1,0 +1,42 @@
+[
+  {
+    "name": "阳历生日",
+    "calendar": "SolarCalendar",
+    "year": null,
+    "month": 8,
+    "day": 16,
+    "falling": ["🎂", "🍰", "🎈", "🎉", "🎁"]
+  },
+  {
+    "name": "农历生日",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 8,
+    "day": 16,
+    "falling": ["🎂", "🍰", "🎈", "🎉", "🎁"]
+  },
+  {
+    "name": "开发此功能时间",
+    "calendar": "SolarCalendar",
+    "year": 2024,
+    "month": 1,
+    "day": 24,
+    "falling": ["🩵", "💚"]
+  },
+  {
+    "name": "完成此功能时间",
+    "calendar": "SolarCalendar",
+    "year": 2024,
+    "month": 1,
+    "day": 25,
+    "falling": ["🎈", "🌹", "🌸", "🌷", "🌺"]
+  },
+  {
+    "name": "春节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 1,
+    "day": 1,
+    "falling": ["❄️", "🧧", "🧨"]
+  }
+]

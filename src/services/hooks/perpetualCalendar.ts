@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 // 万年历，可以获取当前日期、节假日、节气
 export function useHolidayAndSolarTerm(date?: Date | string) {
   const today = date ? new Date(date) : new Date();
-  const [holidays, setHolidays] = useState<any>([]);
-  const [solarTerms, setSolarTerms] = useState<any>([]);
+  const [holidays, setHolidays] = useState<any>(null);
+  const [solarTerms, setSolarTerms] = useState<any>(null);
 
   useEffect(() => {
     const holidaysList = getHolidays(today);
@@ -129,7 +129,7 @@ const getWeeklyCalendar = (year: number, month: number, day: number) => {
   return result;
 };
 // !  获取农历及农历节日
-const getLunarCalendar = (year: number, month: number, day: number) => {
+export const getLunarCalendar = (year: number, month: number, day: number) => {
   // 农历查询表
   const lunarYearArr = [
     0x04bd8,
@@ -614,15 +614,14 @@ const getLunarCalendar = (year: number, month: number, day: number) => {
 
     // ! 农历年月日转换
     // 将计算出来的农历月份转换成汉字月份, 闰月需要在前面加上闰字
-    let reg: any = /\d/;
     if (
       hasLeapMonth(lunarYearArr[ly - BENCHMARK_YEAR]) &&
       typeof lm === "string" &&
-      clm.indexOf("闰") != -1
+      lm.indexOf("闰") != -1
     ) {
-      clm = `闰${lunarMonth[Number(reg.exec(lm)) - 1]}月`;
+      clm = `闰${lunarMonth[Number(lm.replace(/[^0-9]/gi, "")) - 1]}月`;
     } else {
-      clm = `${lunarMonth[Number(reg.exec(lm)) - 1]}月`;
+      clm = `${lunarMonth[Number(lm) - 1]}月`;
     }
     // 将计算出来的农历年份转换为天干地支年
     cly = getTianGan(ly) + getDiZhi(ly);
