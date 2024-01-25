@@ -17,10 +17,6 @@ import FallingFlowers from '../components/FallingFlowers'
 
 export default function Home() {
 
-    let date = new Date();
-    let a = useHolidayAndSolarTerm(date)
-    console.log(a)
-
     return (
         <div className='menu'>
             <FallingFlowers />

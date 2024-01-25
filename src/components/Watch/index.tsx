@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import './index.scss'
+import { getLunarCalendar } from '../../services/hooks/perpetualCalendar';
 
 export default function Watch() {
-    const [years, setYears] = useState<number>() // 年
-    const [months, setMonths] = useState<string>() // 月
-    const [days, setDays] = useState<string>() // 日
-    const [hours, setHours] = useState<string>() // 时
-    const [minutes, setMinutes] = useState<string>() // 分
-    const [seconds, setSeconds] = useState<string>() // 秒
+    const [years, setYears] = useState<number>(2000) // 年
+    const [months, setMonths] = useState<string>('08') // 月
+    const [days, setDays] = useState<string>('16') // 日
+    const [hours, setHours] = useState<string>('00') // 时
+    const [minutes, setMinutes] = useState<string>('00') // 分
+    const [seconds, setSeconds] = useState<string>('00') // 秒
+    const [holidays, setHolidays] = useState<string>('')
 
     const showTime = () => {
         let date = new Date();
@@ -28,8 +30,21 @@ export default function Watch() {
         setTimeout(showTime, 200)
     }
 
+    const getHolidays = () => {
+        let date = new Date();
+        let year: number = date.getFullYear();
+        let month: number = date.getMonth() + 1;
+        let day: number = date.getDate();
+        // let a = useHolidayAndSolarTerm(date)
+        // console.log(a)
+        const lunarHolidays = getLunarCalendar(year, Number(month), Number(day))
+        const lunar = lunarHolidays.lunar ?? ''
+        setHolidays(`${lunarHolidays.cly}年  ${lunarHolidays.ZodiacSigns}  ${lunarHolidays.clm}${lunarHolidays.cld}${lunar ? ' ' + lunar : ''}`)
+    }
+
     useEffect(() => {
         showTime()
+        getHolidays()
     }, [])
 
     return (
@@ -41,6 +56,9 @@ export default function Watch() {
             </div>
             <div className='YMD'>
                 <span>{years}</span>-<span>{months}</span>-<span>{days}</span>
+            </div>
+            <div className='holiday'>
+                {holidays}
             </div>
         </div>
     )

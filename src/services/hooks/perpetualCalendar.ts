@@ -351,6 +351,21 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
     "戌",
     "亥",
   ];
+  // 生肖
+  const ChineseZodiacSigns = [
+    "鼠",
+    "牛",
+    "虎",
+    "兔",
+    "龙",
+    "蛇",
+    "马",
+    "羊",
+    "猴",
+    "鸡",
+    "狗",
+    "猪",
+  ];
   // 农历月
   const lunarMonth = [
     "正",
@@ -503,6 +518,13 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
     return diZhi[diZhiKey - 1];
   };
 
+  // 获取农历年所属生肖, 参数为存储农历年的16进制
+  const getZodiacSigns = function (ly: number) {
+    let ZSKey = (ly - 3) % 12;
+    if (ZSKey === 0) ZSKey = 12;
+    return ChineseZodiacSigns[ZSKey - 1];
+  };
+
   // 根据农历年月日计算农历节日
   const getLunarFestival = (ly: number, lm: number, ld: number) => {
     // 初始化农历节日数组
@@ -559,6 +581,7 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
     // 初始化农历年月日
     let ly: any, lm: any, ld: any;
     let cly: any, clm: any, cld: any;
+    let ZodiacSigns: any; // 生肖
     // 初始化传入年月日
     let sy = time.year; // 阳历年份
     let sm = time.month; // 阳历月份
@@ -625,6 +648,8 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
     }
     // 将计算出来的农历年份转换为天干地支年
     cly = getTianGan(ly) + getDiZhi(ly);
+    //  获取生肖
+    ZodiacSigns = getZodiacSigns(ly);
 
     // 将计算出来的农历天数转换成汉字
     if (ld < 11) {
@@ -656,6 +681,7 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
       clm: clm, //农历汉字月
       cld: cld, //农历汉字日
       lunar: lunar, //农历节日
+      ZodiacSigns: ZodiacSigns, //农历生肖
     };
   };
 
