@@ -11,6 +11,7 @@ import FontComparison from './FontComparison';
 import remarkData from './remark.json'
 
 import ReadMarkDown from './ReadMarkDown';
+import TestHttpServices from '../../services/http/authHttpServices';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -60,7 +61,14 @@ export default function RottenPenHead() {
     }, [])
 
     const MyComponent = async () => {
-
+        let data = {
+            account: 'YG12138',
+            password: "00816"
+        }
+        const item = await TestHttpServices.authLogin(data)
+        console.log(item)
+        const items = await TestHttpServices.getUserById(12)
+        console.log(items)
     };
 
     return (

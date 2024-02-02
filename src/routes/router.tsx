@@ -14,6 +14,7 @@ import ThreeJsTestOne from '../page/threeJs/testOne';
 import ThreeJsTestTwo from '../page/threeJs/testTwo';
 import ThreeJsTestThree from '../page/threeJs/testThree';
 import ChatRoom from '../page/chatRoom';
+import AuthLogin from '../authLogin/auth-login';
 
 export default function Router() {
     return (
@@ -37,6 +38,8 @@ export default function Router() {
                 <Route path="/threejs/testThree" element={<ThreeJsTestThree />}></Route>
 
                 <Route path="/chatRoom" element={<ChatRoom />}></Route>
+
+                <Route path="/login" element={<AuthLogin />}></Route>
             </Routes>
         </BrowserRouter>
     );

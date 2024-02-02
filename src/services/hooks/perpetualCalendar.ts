@@ -549,7 +549,8 @@ export const getLunarCalendar = (year: number, month: number, day: number) => {
       "1001 寒衣节",
       "1015 下元节",
       "1208 腊八节",
-      "1224 祭灶节(小年)",
+      "1223 北方小年",
+      "1224 南方小年",
     ];
     // 计算农历节日
     // ly lm ld 为农历年月日

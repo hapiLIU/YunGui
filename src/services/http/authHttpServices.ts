@@ -24,7 +24,11 @@ export default class TestHttpServices {
     });
   }
   static async authDelete<T>(id: number) {
-    return request.post<T>(SERVERS.test.main + "/" + API.delete + "?id=" + id);
+    return request.post<T>(SERVERS.test.main + "/" + API.delete, {
+      params: {
+        id,
+      },
+    });
   }
   static async getUserList<T>() {
     return request.get<T>(SERVERS.test.main + "/" + API.userList);

@@ -1,0 +1,22 @@
+.cloud {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  position: relative;
+  .cloud-base {
+    background-color: #fff;
+  }
+  .cloud-left {
+    background-color: #fff;
+    border-radius: 50%;
+
+    position: absolute;
+  }
+  .cloud-right {
+    background-color: #fff;
+    border-radius: 50%;
+
+    position: absolute;
+  }
+}
