@@ -1,70 +1,15 @@
 .login-menu {
   width: 100vw;
   height: 100vh;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  .login-bg {
-    width: 100vw;
-    height: 100vh;
-    background-color: #00b4ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
-    overflow: hidden;
-    position: absolute;
-    z-index: -1000;
-    .cloud1 {
-      animation: cloud1 15s linear infinite;
-      position: absolute;
-      left: 0;
-      opacity: 0;
-    }
-    @keyframes cloud1 {
-      0% {
-        transform: translateX(0vw);
-        opacity: 0;
-      }
-      25% {
-        opacity: 1;
-      }
-      75% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(calc(100vw - 450px));
-        opacity: 0;
-      }
-    }
-    .cloud2 {
-      animation: cloud2 15s linear infinite;
-      position: absolute;
-      right: 0;
-      opacity: 0;
-    }
-    @keyframes cloud2 {
-      0% {
-        transform: translateX(0vw);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(-100vw);
-        opacity: 0;
-      }
-    }
-  }
+  background: url("../image/loginbg.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   .login-form {
-    width: 500px;
-    height: 450px;
+    width: 400px;
+    padding: 25px 0;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -77,8 +22,7 @@
       height: 93px;
     }
     .form-content {
-      width: 400px;
-      height: 250px;
+      width: 350px;
       margin-top: 20px;
       border-top: 1px solid #b1aaaa;
       display: flex;
@@ -87,6 +31,37 @@
 
       h2 {
         font-weight: 200;
+      }
+
+      .bottomIn {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+          font-size: 12px;
+          color: #b1aaaa;
+          cursor: pointer;
+        }
+        div:hover {
+          color: #009fdc;
+        }
+      }
+      .bottomUp {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        div {
+          font-size: 12px;
+          color: #b1aaaa;
+          cursor: pointer;
+        }
+        div:hover {
+          color: #009fdc;
+        }
       }
     }
   }
