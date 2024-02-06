@@ -11,7 +11,7 @@ import FontComparison from './FontComparison';
 import remarkData from './remark.json'
 
 import ReadMarkDown from './ReadMarkDown';
-import TestHttpServices from '../../services/http/authHttpServices';
+import AuthHttpServices from '../../services/http/authHttpServices';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -65,9 +65,9 @@ export default function RottenPenHead() {
             account: 'YG12138',
             password: "00816"
         }
-        const item = await TestHttpServices.authLogin(data)
+        const item = await AuthHttpServices.authLogin(data)
         console.log(item)
-        const items = await TestHttpServices.getUserById(12)
+        const items = await AuthHttpServices.getUserById(12)
         console.log(items)
     };
 

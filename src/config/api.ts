@@ -5,5 +5,6 @@ export const API = {
   delete: "auth/delete",
   userList: "user/list",
   getUserById: "user/getUserById",
+  getUserByUserId: "user/getUserByUserId",
   updateUser: "user/updateUser",
 };

@@ -1,20 +1,53 @@
 import { useEffect, useState } from 'react';
-import Cloud from '../components/Cloud'
 import './auth-login.scss'
 import { Button, DatePicker, Form, Image, Input } from 'antd';
+import AuthHttpServices from '../services/http/authHttpServices';
+import { authModel } from '../models/auth.http.model';
+import TokenService from '../services/auth/token.service';
+import UserService from '../services/auth/user.service';
 
 export default function AuthLogin() {
+    const [sign, setSign] = useState<"in" | "up">('in') // 表单选择，登录 or 注册
 
-    const [sign, setSign] = useState<"in" | "up">('in')
+    const [accountStatus, setAccountStatus] = useState<'success' | 'warning' | 'error' | 'validating'>("validating")
 
     // 去登录
-    const goSignIn = (values: any) => {
-        console.log('Success:', values);
+    const goSignIn = async (values: authModel) => {
+        await AuthHttpServices.authLogin(values).then((item: any) => {
+            console.log(item)
+            if (item && item.data) {
+                successLogin(item.data)
+            } else {
+                const error = '登录失败，请重试！'
+                return
+            }
+        }).catch(error => {
+            throw new Error('login failed：' + error); // 如果发生错误，抛出错误信息（可以根据需要自定义错误信息）
+        })
     };
+    // 登录成功
+    const successLogin = async (data: any) => {
+        const token = data["yungui-user-token"]
+        const userId = data.id
+        TokenService.setToken(token)
+        await AuthHttpServices.getUserByUserId(userId).then(item => {
+            if (item) {
+                UserService.setUser(item)
+            }
+        })
+
+    }
+
     // 去注册
     const goSignUp = (values: any) => {
-        console.log('Success:', values);
+        const [account, password, name, email, birthday] = values
+        console.log(account, password, name, email, birthday);
     };
+    // 验证账号是否存在
+    const isAccount = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value: inputValue } = e.target;
+        console.log(inputValue)
+    }
 
     return (
         <div className='login-menu'>
@@ -68,10 +101,12 @@ export default function AuthLogin() {
                         >
                             <Form.Item
                                 name="account"
+                                validateStatus={accountStatus}
+                                hasFeedback
                                 rules={[{ required: true, message: '请输入账号!' }]}
                                 style={{ width: "60%" }}
                             >
-                                <Input placeholder="账号" />
+                                <Input placeholder="账号" onBlur={isAccount} />
                             </Form.Item>
 
                             <Form.Item
