@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import './index.scss'
 import Markdown from 'react-markdown';
 
-const accumulation = require('./积累（整合）.md')
-const latexSkill = require('./latex牛掰小技巧.md')
-const binarySearch = require('./二分查找.md')
+const accumulation = require('./markDown/积累（整合）.md')
+const latexSkill = require('./markDown/latex牛掰小技巧.md')
+const binarySearch = require('./markDown/二分查找.md')
 
 export default function ReadMarkDown() {
 

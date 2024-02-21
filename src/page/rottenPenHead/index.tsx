@@ -4,7 +4,7 @@ import './index.scss'
 import React, { useEffect, useState } from 'react';
 import { BulbOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Button, Menu } from 'antd';
+import { Button, Menu, Image } from 'antd';
 import PracticeUI from './PracticeUI';
 import FontComparison from './FontComparison';
 
@@ -74,8 +74,13 @@ export default function RottenPenHead() {
     return (
         <div className='page'>
             <div className='top'>
-                <div className="title">好记性不如烂笔头</div>
-                <div className="remark">{randomRemark}</div>
+                <div className="logo">
+                    <Image className='icon' src={require("../../image/logo/logo2.png")} preview={false} />
+                </div>
+                <div className="remark">
+                    <div className='remark-title'>好记性不如烂笔头</div>
+                    <div className='remark-content'>{randomRemark}</div>
+                </div>
             </div>
             <div className='content'>
                 <div className='RottenPenHead-menu'>

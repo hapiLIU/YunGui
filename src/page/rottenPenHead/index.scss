@@ -15,11 +15,27 @@
     justify-content: space-between;
     font-family: STXingkai;
     z-index: 9999999;
-    .title {
-      font-size: 40px;
+    .logo {
+      width: 10%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        height: 50px;
+      }
     }
     .remark {
-      font-size: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .remark-title {
+        font-size: 28px;
+      }
+      .remark-content {
+        font-size: 18px;
+      }
     }
   }
 
