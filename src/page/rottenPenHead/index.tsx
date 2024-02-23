@@ -2,7 +2,7 @@ import FloatMenu from '../../components/FloatMenu'
 import './index.scss'
 
 import React, { useEffect, useState } from 'react';
-import { BulbOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, UnderlineOutlined } from '@ant-design/icons';
+import { BorderInnerOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Menu, Image } from 'antd';
 import PracticeUI from './PracticeUI';
@@ -12,6 +12,7 @@ import remarkData from './remark.json'
 
 import ReadMarkDown from './ReadMarkDown';
 import AuthHttpServices from '../../services/http/authHttpServices';
+import Canvas from './canvas';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -35,6 +36,7 @@ const items: MenuItem[] = [
     getItem('UI组件练习', 'PracticeUI', <UnderlineOutlined />,),
     getItem('字体样式对比', 'FontComparison', <HighlightOutlined />,),
     getItem('MarkDown', 'markdown', <FileTextOutlined />,),
+    getItem('Canvas', 'canvas', <BorderInnerOutlined />,),
     getItem('测试', 'test', <QuestionCircleOutlined />,),
 ];
 
@@ -102,6 +104,9 @@ export default function RottenPenHead() {
                     </div>
                     <div style={{ width: "100%", height: "100%", display: current == 'markdown' ? '' : 'none' }}>
                         <ReadMarkDown />
+                    </div>
+                    <div style={{ width: "100%", height: "100%", display: current == 'canvas' ? '' : 'none' }}>
+                        <Canvas />
                     </div>
                     <div style={{ width: "100%", height: "100%", display: current == 'test' ? '' : 'none' }}>
                         <Button onClick={MyComponent}>测试</Button>
