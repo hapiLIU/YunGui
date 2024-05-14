@@ -8,9 +8,13 @@ import floor from './image/floor纹理.jpg'
 import grass_top from "./image/top.png";
 import grass_side from "./image/side.png";
 import grass_bottom from "./image/bottom.png";
+import { useEffect } from 'react';
 
 export default function ThreeJsTestOne() {
     // 渲染3D组件
+    useEffect(() => {
+        renderThree()
+    }, [])
     const renderThree = () => {
         // 1. 创建渲染器,指定渲染的分辨率和尺寸,然后添加到指定容器中
         const renderer = new THREE.WebGLRenderer();
@@ -143,7 +147,7 @@ export default function ThreeJsTestOne() {
 
     return (
         <div className='threeMain' id='threeMain'>
-            <Button className='testBtn' type="primary" onClick={() => renderThree()}>测试按钮</Button>
+            {/* <Button className='testBtn' type="primary" onClick={() => renderThree()}>测试按钮</Button> */}
         </div>
     )
 }

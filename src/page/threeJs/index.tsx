@@ -11,6 +11,7 @@ export default function ThreeJs() {
             <Button className='menuBtn' title='testOne' onClick={() => navigate('/threejs/testOne')}>One</Button>
             <Button className='menuBtn' title='testTwo' onClick={() => navigate('/threejs/testTwo')}>Two</Button>
             <Button className='menuBtn' title='testThree' onClick={() => navigate('/threejs/testThree')}>Three</Button>
+            <Button className='menuBtn' title='threeFour' onClick={() => navigate('/threejs/threeFour')}>Four</Button>
             <FloatMenu />
         </div>
     )
