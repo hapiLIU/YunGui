@@ -2,7 +2,7 @@ import FloatMenu from '../../components/FloatMenu'
 import './index.scss'
 
 import React, { useEffect, useState } from 'react';
-import { BorderInnerOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, UnderlineOutlined } from '@ant-design/icons';
+import { BorderInnerOutlined, FileTextOutlined, HighlightOutlined, QuestionCircleOutlined, ShopOutlined, UnderlineOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Menu, Image } from 'antd';
 import PracticeUI from './PracticeUI';
@@ -13,6 +13,7 @@ import remarkData from './remark.json'
 import ReadMarkDown from './ReadMarkDown';
 import AuthHttpServices from '../../services/http/authHttpServices';
 import Canvas from './canvas';
+import WaterfallFlow from './WaterfallFlow';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -32,18 +33,32 @@ function getItem(
     } as MenuItem;
 }
 
-const items: MenuItem[] = [
-    getItem('UI组件练习', 'PracticeUI', <UnderlineOutlined />,),
-    getItem('字体样式对比', 'FontComparison', <HighlightOutlined />,),
-    getItem('MarkDown', 'markdown', <FileTextOutlined />,),
-    getItem('Canvas', 'canvas', <BorderInnerOutlined />,),
-    getItem('测试', 'test', <QuestionCircleOutlined />,),
-];
+// 下方添加侧边栏主题
+const exerciseContent: {
+    label: React.ReactNode,
+    key: any,
+    icon?: React.ReactNode,
+    children?: MenuItem[],
+    type?: 'group', component: React.ReactNode
+}[] = [
+        { label: 'UI组件练习', key: 'PracticeUI', icon: <UnderlineOutlined />, component: <PracticeUI /> },
+        { label: '字体样式对比', key: 'FontComparison', icon: <HighlightOutlined />, component: <FontComparison /> },
+        { label: 'MarkDown', key: 'markdown', icon: <FileTextOutlined />, component: <ReadMarkDown /> },
+        { label: 'Canvas', key: 'canvas', icon: <BorderInnerOutlined />, component: <Canvas /> },
+        { label: '模拟小红书瀑布流', key: 'WaterfallFlow', icon: <ShopOutlined />, component: <WaterfallFlow /> },
+    ]
+
+const items: MenuItem[] = [];
+exerciseContent.forEach(item => {
+    items.push(getItem(item.label, item.key, item.icon, item?.children, item?.type))
+})
+items.push(getItem('测试', 'test', <QuestionCircleOutlined />,))
+
 
 export default function RottenPenHead() {
     // 导航栏及其他数据
     const [loading, setLoading] = useState(false);
-    const [current, setCurrent] = useState('PracticeUI');
+    const [current, setCurrent] = useState(exerciseContent[0].key);
     const [collapsed, setCollapsed] = useState(false);
 
     const [randomRemark, setRandomRemark] = useState('')
@@ -96,21 +111,14 @@ export default function RottenPenHead() {
                     />
                 </div>
                 <div className='RottenPenHead-main'>
-                    <div style={{ width: "100%", height: "100%", display: current == 'PracticeUI' ? '' : 'none' }}>
-                        <PracticeUI />
-                    </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'FontComparison' ? '' : 'none' }}>
-                        <FontComparison />
-                    </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'markdown' ? '' : 'none' }}>
-                        <ReadMarkDown />
-                    </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'canvas' ? '' : 'none' }}>
-                        <Canvas />
-                    </div>
-                    <div style={{ width: "100%", height: "100%", display: current == 'test' ? '' : 'none' }}>
+                    {exerciseContent.map(item => {
+                        return current == item.key && <div style={{ width: "100%", height: "100%" }}>
+                            {item.component}
+                        </div>
+                    })}
+                    {current == 'test' && <div style={{ width: "100%", height: "100%" }}>
                         <Button onClick={MyComponent}>测试</Button>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <FloatMenu />
