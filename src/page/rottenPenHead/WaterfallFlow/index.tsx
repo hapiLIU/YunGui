@@ -5,23 +5,27 @@ import data from './xhsData.json'
 import data2 from './xhsData2.json'
 import { getRandomColorHEX } from '../../../services/hooks/practicalMethod';
 import { Avatar } from 'antd';
-import { HeartOutlined } from '@ant-design/icons';
+import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 
 export interface ICardItem {
     id: string | number;
-    width: number;
     originalHeight: number;  //  原先高度，后台传值
     originalWidth: number;  //  原先宽度，后台传值
+    width: number;  //  卡片宽度
     imgHeight: number;  // 图片高度
     cardHeight: number;  // 卡片高度
-    x: number;
-    y: number;
-    display_title: string;
-    user: {
+    x: number;  //  定位left
+    y: number;  //  定位top
+    display_title: string;  //  小标题文字
+    user: {     // 用户信息
         nick_name: string,
         avatar: string,
         user_id: string | number,
         nickname: string
+    },
+    interact_info: {    // 点赞
+        liked: boolean,
+        liked_count: string
     },
     color: string
 }
@@ -86,6 +90,7 @@ export default function WaterfallFlow() {
                         y: 0,
                         display_title: item.note_card.display_title,
                         user: item.note_card.user,
+                        interact_info: item.note_card.interact_info,
                         color: getRandomColorHEX()
                     }
                     computedData.push(content);
@@ -232,8 +237,8 @@ export default function WaterfallFlow() {
                                         <span className='name'>{item.user.nickname}</span>
                                     </div>
                                     <div className='like'>
-                                        <HeartOutlined />
-                                        <span style={{ marginLeft: 2 }}>1000</span>
+                                        {item.interact_info.liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
+                                        <span style={{ marginLeft: 2 }}>{item.interact_info.liked_count}</span>
                                     </div>
                                 </div>
                             </div>
