@@ -15,5 +15,41 @@
     top: 0;
     box-sizing: border-box;
     border-radius: 10px;
+    // transition: all 0.1s;
+  }
+  &-item-image {
+    border-radius: 10px;
+  }
+  &-item-footer {
+    box-sizing: border-box;
+    padding: 12px;
+    .title {
+      margin-bottom: 8px;
+    }
+    .author {
+      height: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .author-info {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 12px;
+        .avatar {
+          width: 20px;
+          height: 20px;
+          margin-right: 6px;
+          border: 1px solid var(--color-border);
+        }
+        .name {
+        }
+      }
+      .like {
+      }
+    }
   }
 }
