@@ -74,22 +74,16 @@ Longtable表格设置同样宽度但是列数不一样就会两个表格不一�
 
 上方换行会出现间距大，不算不美观，但是如遇要求一倍行距，可用下方操作
 
-例![image-20220818093151103](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220818093151103.png)
-
 ```JavaScript
 \multirow{4}{0.15\textwidth}{\renewcommand{\baselinestretch}{0.8}\normalsize\zihao{5}\VAR{lists.point|escapeTex if lists.point}}
 // \renewcommand{\baselinestretch}{0.8}\normalsize\zihao{5}  可使文本根据基线调整行距间距，是单独调整行距（\renewcommand\arraystretch{1}）调不动的情况下使用
 ```
 
-调整之后
 
-![image-20220818093211394](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220818093211394.png)
 
 ## 六、图标编号问题
 
 如果需要使用的是自定义目录、自定义标题，那么其标题下所出现的表及图的编号就会出现一个问题，就是没有根据所设置的标题进行排序（如下图），那么如何做才能达到想要的效果呢，往下看
-
-![img](file:///C:/Windows/TEMP/msohtmlclip1/01/clip_image001.png)
 
 ```JavaScript
 \renewcommand {\thetable} {\thechapter{}-\arabic{table}}	%设置表序号	\thechapter{}是根据标题序号
@@ -210,14 +204,6 @@ Longtable表格设置同样宽度但是列数不一样就会两个表格不一�
     \end{longtable}
 \end{small}
 ```
-
-![image-20220920100823675](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220920100823675.png)
-
-![image-20220920100836100](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220920100836100.png)
-
-![image-20220920100850239](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220920100850239.png)
-
-![image-20220920100857877](C:\Users\刘圆\AppData\Roaming\Typora\typora-user-images\image-20220920100857877.png)
 
 
 
