@@ -26,6 +26,8 @@ export default function FallingFlowers() {
     const [isClose, setIsClose] = useState<boolean>(false)  //  是否关闭落花
     const [keys, setKeys] = useState<boolean>(false)
 
+    const [isFestivals, setIsFestivals] = useState<boolean>(false) //  当天是否存在节日
+
     useEffect(() => {
         const createRainName = () => {
             let span = document.createElement("span");
@@ -57,17 +59,27 @@ export default function FallingFlowers() {
                 // 查询阳历节日
                 if (((item.year && item.year == year) || !item.year) && ((item.month && item.month == month) || !item.month) && (item.day && item.day == day)) {
                     setIcons(item.falling)
+                    setIsFestivals(true)
                 }
             } else if (item.calendar == "LunarCalendar") {
                 // 查询农历节日
                 if (((item.year && item.year == lunar.ly) || !item.year) && ((item.month && item.month == lunar.lm) || !item.month) && (item.day && item.day == lunar.ld)) {
                     setIcons(item.falling)
+                    setIsFestivals(true)
                 }
             } else {
                 console.error(item.name + 'calendar编写错误')
             }
         })
     }
+
+    useEffect(() => {
+        if (isFestivals) {
+            setIsClose(false)
+        } else {
+            setIsClose(true)
+        }
+    }, [isFestivals])
 
     // 监听是否关闭落花的字段变化，来开关落花
     useEffect(() => {
@@ -107,7 +119,7 @@ export default function FallingFlowers() {
 
     return (
         <div className='falling-flowers' key={keys ? "aa" : "bb"}>
-            <Button className='switch' onClick={() => setIsClose(pre => !pre)} title='关闭落花' icon={<CloseCircleOutlined />} type="text" ghost></Button>
+            <Button className='switch' style={{ display: isClose ? 'none' : "" }} onClick={() => setIsClose(pre => !pre)} title='关闭落花' icon={<CloseCircleOutlined />} type="text" ghost></Button>
         </div>
     )
 }

@@ -38,5 +38,69 @@
     "month": 1,
     "day": 1,
     "falling": ["❄️", "🧧", "🧨"]
+  },
+  {
+    "name": "元宵节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 1,
+    "day": 15,
+    "falling": ["❄️", "❍"]
+  },
+  {
+    "name": "龙抬头",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 2,
+    "day": 2,
+    "falling": ["🐲", "💇‍", "🐉"]
+  },
+  {
+    "name": "清明节",
+    "calendar": "SolarCalendar",
+    "year": null,
+    "month": 4,
+    "day": 4,
+    "falling": ["🌿", "🌳", "🌼", "🌷"]
+  },
+  {
+    "name": "端午节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 5,
+    "day": 5,
+    "falling": ["🚣", "🚣‍♀️", "🍃"]
+  },
+  {
+    "name": "七夕节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 7,
+    "day": 7,
+    "falling": ["💕", "💖", "💛"]
+  },
+  {
+    "name": "中秋节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 8,
+    "day": 15,
+    "falling": ["🥮", "🥮"]
+  },
+  {
+    "name": "重阳节",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 9,
+    "day": 9,
+    "falling": ["🏵️", "🌸", "🌺", "🌻"]
+  },
+  {
+    "name": "除夕",
+    "calendar": "LunarCalendar",
+    "year": null,
+    "month": 12,
+    "day": 30,
+    "falling": ["❄️", "🧧", "🧨"]
   }
 ]

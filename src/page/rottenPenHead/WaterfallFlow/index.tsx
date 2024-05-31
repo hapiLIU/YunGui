@@ -6,6 +6,7 @@ import data2 from './xhsData2.json'
 import { getRandomColorHEX } from '../../../services/hooks/practicalMethod';
 import { Avatar } from 'antd';
 import { HeartFilled, HeartOutlined } from '@ant-design/icons';
+import { debounce } from '../../../services/hooks/performanceTool';
 
 export interface ICardItem {
     id: string | number;
@@ -36,19 +37,6 @@ export interface IWaterFallProps {
     bottom: number; // 距底距离（触底加载更多）
     pageSize: number;   //当前页数
     pageNum: number[];   //每页数量
-}
-
-// 防抖
-const mydebounce = (fn: any, delay: number) => {
-    let timer: any = null;
-    const _debounce = () => {
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(() => {
-            fn();
-            timer = null;
-        }, delay)
-    }
-    return _debounce
 }
 
 export default function WaterfallFlow() {
@@ -207,7 +195,7 @@ export default function WaterfallFlow() {
     };
 
     // 触底加载
-    const handleScroll = mydebounce(() => {
+    const handleScroll = debounce(() => {
         if (divRef.current) {
             const { scrollTop, clientHeight, scrollHeight } = divRef.current;
             if (clientHeight + scrollTop + porps.bottom >= scrollHeight && !loading) {
