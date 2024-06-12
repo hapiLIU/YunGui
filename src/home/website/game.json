@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "https://www.yikm.net/logo.png",
+    "name": "小霸王",
+    "route": "https://www.yikm.net/"
+  },
+  {
+    "icon": "https://nazo.one-story.cn/favicon.ico",
+    "name": "Nazo Game",
+    "route": "https://nazo.one-story.cn/"
+  },
+  {
+    "icon": "https://dinoswords.gg/favicon-32x32.png",
+    "name": "Dino Swords",
+    "route": "https://dinoswords.gg/"
+  },
+  {
+    "icon": "",
+    "name": "谷歌小恐龙",
+    "route": "chrome://dino/"
+  },
+  {
+    "icon": "https://gartic.io/favicon.ico",
+    "name": "Gartic.io",
+    "route": "https://gartic.io/"
+  },
+  {
+    "icon": "https://mk48.io/favicon.png",
+    "name": "mk48.io",
+    "route": "https://mk48.io/"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "icon": "https://static.jyshare.com/images/favicon.ico",
+    "name": "菜鸟教程",
+    "route": "https://www.runoob.com/"
+  },
+  {
+    "icon": "https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png",
+    "name": "NPM",
+    "route": "https://www.npmjs.com/"
+  },
+  {
+    "icon": "https://react.docschina.org/favicon.ico",
+    "name": "React",
+    "route": "https://react.docschina.org/"
+  },
+  {
+    "icon": "https://angular.cn/assets/images/favicons/favicon-144x144.png",
+    "name": "Angular",
+    "route": "https://angular.cn/"
+  },
+  {
+    "icon": "https://docs.nestjs.cn/favicon.ico",
+    "name": "Nest.js",
+    "route": "https://docs.nestjs.cn/"
+  },
+  {
+    "icon": "https://echarts.apache.org/zh/images/favicon.png?_v_=20240226",
+    "name": "Apache ECharts",
+    "route": "https://echarts.apache.org/zh/index.html"
+  },
+  {
+    "icon": "https://momentjs.cn/static/img/moment-favicon.png",
+    "name": "Moment.js",
+    "route": "https://momentjs.cn/"
+  },
+  {
+    "icon": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+    "name": "Ant Design",
+    "route": "https://ant-design.antgroup.com/"
+  },
+  {
+    "icon": "https://material.angular.cn/assets/img/favicons/favicon.ico?v=8.2.3",
+    "name": "Angular Material",
+    "route": "https://material.angular.cn/"
+  },
+  {
+    "icon": "https://element-plus.org/images/element-plus-logo-small.svg",
+    "name": "Element Plus",
+    "route": "https://element-plus.org/zh-CN/#/zh-CN"
+  },
+  {
+    "icon": "https://electronjs.p2hp.com/assets/img/favicon.ico",
+    "name": "Electron",
+    "route": "https://electronjs.p2hp.com/"
+  },
+  {
+    "icon": "https://leetcode.cn/favicon.ico",
+    "name": "力扣",
+    "route": "https://leetcode.cn/"
+  },
+  {
+    "icon": "https://threejs.org/files/favicon.ico",
+    "name": "Three.js",
+    "route": "https://threejs.org/"
+  },
+  {
+    "icon": "https://www.lodashjs.com/img/logo.png",
+    "name": "Lodash 中文文档",
+    "route": "https://www.lodashjs.com/"
+  }
+]

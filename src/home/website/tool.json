@@ -1,0 +1,77 @@
+[
+  {
+    "icon": "https://nlp-eb.cdn.bcebos.com/static/eb/asset/logo.8a6b508d.png",
+    "name": "文心一言",
+    "route": "https://yiyan.baidu.com/"
+  },
+  {
+    "icon": "https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_e835568.png",
+    "name": "百度翻译",
+    "route": "https://fanyi.baidu.com/"
+  },
+  {
+    "icon": "https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico",
+    "name": "CodePen",
+    "route": "https://codepen.io/"
+  },
+  {
+    "icon": "https://github.githubassets.com/favicons/favicon.png",
+    "name": "GitHub",
+    "route": "https://github.com/"
+  },
+  {
+    "icon": "https://www.aconvert.com/favicon.ico",
+    "name": "在线转换",
+    "route": "https://www.aconvert.com/cn/"
+  },
+  {
+    "icon": "https://www.ilovepdf.com/img/favicons-pdf/favicon-32x32.png",
+    "name": "PDF转word",
+    "route": "https://www.ilovepdf.com/zh-cn/pdf_to_word"
+  },
+  {
+    "icon": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*7svFR6wkPMoAAAAAAAAAAAAADmJ7AQ/original",
+    "name": "AntV",
+    "route": "https://antv.antgroup.com/zh"
+  },
+  {
+    "icon": "https://lf1-cdn2-tos.bytegoofy.com/bydesign/iconparksite/logo.svg",
+    "name": "IconPark",
+    "route": "https://iconpark.oceanengine.com/"
+  },
+  {
+    "icon": "",
+    "name": "Color",
+    "route": "http://color.aurlien.net/"
+  },
+  {
+    "icon": "https://www.chajianxw.com/static/favicon.ico",
+    "name": "插件小屋",
+    "route": "https://www.chajianxw.com/"
+  },
+  {
+    "icon": "https://base64.us/favicon.png",
+    "name": "在线编码解码",
+    "route": "https://base64.us/"
+  },
+  {
+    "icon": "",
+    "name": "Gradient|渐变设计",
+    "route": "https://gradient.shapefactory.co/"
+  },
+  {
+    "icon": "",
+    "name": "零代码工具箱",
+    "route": "https://lingdaima.com/"
+  },
+  {
+    "icon": "https://www.hippopx.com/public/css/favicon.ico",
+    "name": "Hippopx",
+    "route": "https://www.hippopx.com/"
+  },
+  {
+    "icon": "https://css-loaders.com/fav.png",
+    "name": "CSS Loaders",
+    "route": "https://css-loaders.com/"
+  }
+]

@@ -1,0 +1,168 @@
+.appGroupBtn {
+  width: 110px;
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  .appGroupBtn-content {
+    width: 102px;
+    height: 102px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid #c0bebe;
+    padding: 5px;
+    cursor: pointer;
+    .appGroupBtn-content-item {
+      display: inline-block;
+      width: 22.5px;
+      height: 30px;
+      margin: 0 auto;
+      text-align: center;
+      .appGroupBtn-content-items {
+        display: inline-block;
+        margin: 0 auto;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+  .appGroupBtn-title {
+    cursor: pointer;
+    font-family: "KaiTi";
+    font-size: 20px;
+  }
+}
+.modal {
+  &-container {
+    position: fixed;
+    z-index: 99999999;
+    display: table;
+    height: 100vw;
+    width: 100vh;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+  }
+  &-background {
+    /* --背景虚化-- */
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.5); /* 设置半透明背景 */
+    /* -------- */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-main {
+    width: 30%;
+    height: 70%;
+    min-width: 800px;
+    min-height: 800px;
+    border: 1px solid #c0bebe;
+    border-radius: 50px;
+    padding: 50px 0 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-title {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+  &-content {
+    width: 100%;
+    height: calc(90% - 50px);
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+    padding: 0 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    .modal-content-item {
+      display: inline-block;
+    }
+  }
+  &-pagination {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-pagination-item {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #c0bebe;
+  }
+}
+@keyframes containerScaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes containerScaleDown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5) translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) translateY(1000px);
+    opacity: 0;
+  }
+}

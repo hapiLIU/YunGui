@@ -1,0 +1,52 @@
+[
+  {
+    "icon": "http://www.zhaotaici.cn/img/favicon.ico",
+    "name": "找台词",
+    "route": "http://www.zhaotaici.cn/##"
+  },
+  {
+    "icon": "https://svip.bljiex.cc/favicon.ico",
+    "name": "BL解析",
+    "route": "https://svip.bljiex.cc/"
+  },
+  {
+    "icon": "https://weixin.hngscloud.com/images/hnlogo.jpg",
+    "name": "河南高速",
+    "route": "https://weixin.hngscloud.com/"
+  },
+  {
+    "icon": "https://staticv2.hi2future.com/me2me/icon/main.ico",
+    "name": "时光邮局",
+    "route": "https://www.hi2future.com/"
+  },
+  {
+    "icon": "",
+    "name": "金句搜索器",
+    "route": "http://biji.wudabai.com/"
+  },
+  {
+    "icon": "",
+    "name": "中国家谱知识服务平台",
+    "route": "https://jiapu.library.sh.cn/#/"
+  },
+  {
+    "icon": "https://p3.img.cctvpic.com/photoAlbum/page/performance/img/2023/7/19/1689759925954_250.png",
+    "name": "熊猫频道",
+    "route": "https://www.ipanda.com/"
+  },
+  {
+    "icon": "https://app.nguaduot.cn/timeline/static/img/favicon-32x32.png",
+    "name": "拾光壁纸",
+    "route": "https://app.nguaduot.cn/timeline"
+  },
+  {
+    "icon": "https://fuun.fun/favicon-32x32.png",
+    "name": "奇趣网站收藏家",
+    "route": "https://fuun.fun/"
+  },
+  {
+    "icon": "https://www.16personalities.com/static/images/favicons/favicon-32x32.png",
+    "name": "性格测试",
+    "route": "https://www.16personalities.com/ch"
+  }
+]

@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
+    "@types/lodash": "^4.17.5",
     "esbuild-loader": "^4.1.0",
     "html-loader": "^5.0.0",
     "postcss-loader": "^8.1.1",
