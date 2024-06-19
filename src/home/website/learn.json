@@ -1,5 +1,15 @@
 [
   {
+    "icon": "https://g.csdnimg.cn/static/logo/favicon32.ico",
+    "name": "CSDN",
+    "route": "https://www.csdn.net/"
+  },
+  {
+    "icon": "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg",
+    "name": "稀土掘金",
+    "route": "https://juejin.cn/"
+  },
+  {
     "icon": "https://static.jyshare.com/images/favicon.ico",
     "name": "菜鸟教程",
     "route": "https://www.runoob.com/"

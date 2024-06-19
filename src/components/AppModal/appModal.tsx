@@ -3,6 +3,7 @@ import _ from 'lodash'
 import './appModal.scss'
 import { Button, Image } from 'antd';
 import DesktopIcon, { DesktopIconType } from '../../components/DesktopIcon';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 export interface ModalProps {
     title: React.ReactNode;  // 弹框标题
@@ -63,6 +64,19 @@ export default function AppModal(props: ModalProps) {
         }
     }
 
+    // 换页
+    const forward = () => {
+        if (pageNum > 0) {
+            setPageNum(pageNum - 1)
+        }
+    }
+    const backward = () => {
+        if (pageNum < handleData.length - 1) {
+            setPageNum(pageNum + 1)
+        }
+    }
+
+
     return (
         <div>
             <div className='appGroupBtn' onClick={openModal}>
@@ -91,9 +105,11 @@ export default function AppModal(props: ModalProps) {
                             })}
                         </div>
                         <div className='modal-pagination'>
+                            {handleData.length > 1 ? <Button disabled={pageNum == 0} onClick={forward} shape="circle" type="text" icon={<LeftOutlined />}></Button> : ""}
                             {handleData.length > 1 ? handleData.map((item, index) => {
                                 return <div className='modal-pagination-item' style={pageNum == index ? { backgroundColor: '#333333' } : {}} onClick={() => setPageNum(index)}></div>
                             }) : ''}
+                            {handleData.length > 1 ? <Button disabled={pageNum == handleData.length - 1} onClick={backward} shape="circle" type="text" icon={<RightOutlined />}></Button> : ""}
                         </div>
                     </div>
                 </div>

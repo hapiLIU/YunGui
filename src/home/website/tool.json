@@ -73,5 +73,10 @@
     "icon": "https://css-loaders.com/fav.png",
     "name": "CSS Loaders",
     "route": "https://css-loaders.com/"
+  },
+  {
+    "icon": "https://moeyy.cn/favicon.ico",
+    "name": "GitHub 文件加速",
+    "route": "https://moeyy.cn/gh-proxy"
   }
 ]

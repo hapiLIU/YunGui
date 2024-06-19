@@ -15,6 +15,9 @@ import AuthHttpServices from '../../services/http/authHttpServices';
 import Canvas from './canvas';
 import WaterfallFlow from './WaterfallFlow';
 
+import AppModal from '../../components/AppModal/appModal';
+import toolWeb from '../../home/website/tool.json'
+
 type MenuItem = Required<MenuProps>['items'][number];
 
 function getItem(
@@ -118,6 +121,7 @@ export default function RottenPenHead() {
                     })}
                     {current == 'test' && <div style={{ width: "100%", height: "100%" }}>
                         <Button onClick={MyComponent}>测试</Button>
+                        <AppModal title={'实用工具'} desktopApp={toolWeb} />
                     </div>}
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import './index.scss'
 import FloatMenu from '../components/FloatMenu'
-import DesktopIcon from '../components/DesktopIcon'
 import Watch from '../components/Watch'
 
 import minesweeper from '../image/扫雷.jpg'
