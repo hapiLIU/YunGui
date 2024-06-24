@@ -23,7 +23,6 @@ export default function Router() {
         <BrowserRouter basename={process.env.NODE_ENV == 'development' ? '/' : '/YunGui/'}>
             <Routes>
                 <Route path="/" element={<Navigate to={'/home'} replace />}></Route>
-                <Route path="/YunGui" element={<Navigate to={'/home'} replace />}></Route>
                 <Route path="/home" element={<Home />}></Route>
 
                 <Route path="/minesweeper" element={<Minesweeper />}></Route>
