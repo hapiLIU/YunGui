@@ -2,6 +2,7 @@
   "name": "YunGui",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hapiliu.github.io/YunGui/",
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
     "@react-spring/web": "^9.7.3",
@@ -42,7 +43,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:test": "webpack"
+    "build:test": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +69,7 @@
     "@types/d3": "^7.4.3",
     "@types/lodash": "^4.17.5",
     "esbuild-loader": "^4.1.0",
+    "gh-pages": "^6.1.1",
     "html-loader": "^5.0.0",
     "postcss-loader": "^8.1.1",
     "sass-loader": "^14.2.1",
