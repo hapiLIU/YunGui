@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/YunGui/static/css/main.4af49073.css",
-    "main.js": "/YunGui/static/js/main.767a808a.js",
+    "main.js": "/YunGui/static/js/main.9585fee8.js",
     "static/js/453.c0c43cb3.chunk.js": "/YunGui/static/js/453.c0c43cb3.chunk.js",
     "static/media/loginbg.jpg": "/YunGui/static/media/loginbg.d09a150102f26e858f06.jpg",
     "static/media/五子棋.jpg": "/YunGui/static/media/五子棋.892054ccce4ccbae4d7a.jpg",
@@ -24,11 +24,11 @@
     "static/media/二分查找.md": "/YunGui/static/media/二分查找.fdf64841c9dbef41f00b.md",
     "index.html": "/YunGui/index.html",
     "main.4af49073.css.map": "/YunGui/static/css/main.4af49073.css.map",
-    "main.767a808a.js.map": "/YunGui/static/js/main.767a808a.js.map",
+    "main.9585fee8.js.map": "/YunGui/static/js/main.9585fee8.js.map",
     "453.c0c43cb3.chunk.js.map": "/YunGui/static/js/453.c0c43cb3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4af49073.css",
-    "static/js/main.767a808a.js"
+    "static/js/main.9585fee8.js"
   ]
 }
