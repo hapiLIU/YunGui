@@ -1,5 +1,5 @@
 
-import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Minesweeper from '../page/playGames/Minesweeper';
 import MinesweeperGame from '../page/playGames/Minesweeper/game';
 import Home from '../home';
@@ -17,87 +17,35 @@ import ThreeJsTestFour from '../page/threeJs/testFour';
 import ChatRoom from '../page/chatRoom';
 import AuthLogin from '../authLogin/auth-login';
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Navigate to={'/home'} replace />,
-    },
-    {
-        path: '/home',
-        element: <Home />,
-    },
-
-    // 小游戏
-    {
-        path: '/minesweeper',
-        element: <Minesweeper />,
-    },
-    {
-        path: '/minesweeper/game/:rows/:cols/:mines',
-        element: <MinesweeperGame />,
-    },
-    {
-        path: '/sudoku',
-        element: <Sudoku />,
-    },
-    {
-        path: '/sudoku/game/:modal',
-        element: <SudokuGame />,
-    },
-    {
-        path: '/gobang',
-        element: <Gobang />,
-    },
-    {
-        path: '/playingCards',
-        element: <PlayingCards />,
-    },
-    {
-        path: '/tankBattle',
-        element: <TankBattle />,
-    },
-
-    // 练习
-    {
-        path: '/rottenPenHead',
-        element: <RottenPenHead />,
-    },
-
-    // three练习
-    {
-        path: '/threejs',
-        element: <ThreeJs />,
-    },
-    {
-        path: '/threejs/testOne',
-        element: <ThreeJsTestOne />,
-    },
-    {
-        path: '/threejs/testTwo',
-        element: <ThreeJsTestTwo />,
-    },
-    {
-        path: '/threejs/testThree',
-        element: <ThreeJsTestThree />,
-    },
-    {
-        path: '/threejs/threeFour',
-        element: <ThreeJsTestFour />,
-    },
-
-    // 聊天室
-    {
-        path: '/chatRoom',
-        element: <ChatRoom />,
-    },
-
-    // 登录
-    {
-        path: '/login',
-        element: <AuthLogin />,
-    },
-]);
-
 export default function Router() {
-    return <RouterProvider router={router} />
+    console.log(process.env.NODE_ENV)
+    return (
+        <BrowserRouter basename={process.env.NODE_ENV == 'development' ? '/' : '/YunGui/'}>
+            <Routes>
+                <Route path="/" element={<Navigate to={'/home'} replace />}></Route>
+                <Route path="/YunGui" element={<Navigate to={'/home'} replace />}></Route>
+                <Route path="/home" element={<Home />}></Route>
+
+                <Route path="/minesweeper" element={<Minesweeper />}></Route>
+                <Route path="/minesweeper/game/:rows/:cols/:mines" element={<MinesweeperGame />}></Route>
+                <Route path="/sudoku" element={<Sudoku />}></Route>
+                <Route path="/sudoku/game/:modal" element={<SudokuGame />}></Route>
+                <Route path="/gobang" element={<Gobang />}></Route>
+                <Route path="/playingCards" element={<PlayingCards />}></Route>
+                <Route path="/tankBattle" element={<TankBattle />}></Route>
+
+                <Route path="/rottenPenHead" element={<RottenPenHead />}></Route>
+
+                <Route path="/threejs" element={<ThreeJs />}></Route>
+                <Route path="/threejs/testOne" element={<ThreeJsTestOne />}></Route>
+                <Route path="/threejs/testTwo" element={<ThreeJsTestTwo />}></Route>
+                <Route path="/threejs/testThree" element={<ThreeJsTestThree />}></Route>
+                <Route path="/threejs/threeFour" element={<ThreeJsTestFour />}></Route>
+
+                <Route path="/chatRoom" element={<ChatRoom />}></Route>
+
+                <Route path="/login" element={<AuthLogin />}></Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
