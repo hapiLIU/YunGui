@@ -153,13 +153,13 @@ const PlayingCards = () => {
         <div className="cardsIndex">
             <div className="cardsMenu">
                 <Tooltip placement="right" title={<span style={{ color: "#000" }}>回首页</span>} color={'#fff'}>
-                    <Button className='cardsMenuBtn' onClick={() => navigate('/')}><LogoutOutlined /></Button>
+                    <Button className='cardsMenuBtn' onClick={() => navigate(process.env.NODE_ENV == 'development' ? '/' : '/YunGui/')}><LogoutOutlined /></Button>
                 </Tooltip>
                 <Tooltip placement="right" title={<span style={{ color: "#000" }}>重新对局</span>} color={'#fff'}>
                     <Button className='cardsMenuBtn'><RedoOutlined /></Button>
                 </Tooltip>
             </div>
-            <Modal open={true} maskClosable={false} closeIcon={null} footer={<Button type="primary" onClick={() => navigate('/')}>回首页</Button>}>
+            <Modal open={true} maskClosable={false} closeIcon={null} footer={<Button type="primary" onClick={() => navigate(process.env.NODE_ENV == 'development' ? '/' : '/YunGui/')}>回首页</Button>}>
                 <div style={{ height: "100px", lineHeight: "100px" }}>此功能出现严重问题，暂时未修复完毕，请移步其他游戏</div>
             </Modal>
             <div className="cardsContent">

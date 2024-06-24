@@ -459,7 +459,7 @@ const Gobang = () => {
             {contextHolder}
             <h1>五子棋</h1>
             <div className='headerGobang' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Button type="primary" onClick={() => navigate('/')}>回首页</Button>
+                <Button type="primary" onClick={() => navigate(process.env.NODE_ENV == 'development' ? '/' : '/YunGui/')}>回首页</Button>
                 <div style={{ fontSize: 18 }}>
                     <p><AlertFilled style={{ marginRight: 10, color: rotationColor ? "red" : '' }} onClick={() => changeStartColor('black')} />黑子</p>
                     <p><AlertOutlined style={{ marginRight: 10, color: !rotationColor ? "red" : '' }} onClick={() => changeStartColor('white')} />白子</p>

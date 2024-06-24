@@ -5,7 +5,7 @@ import { HomeOutlined } from '@ant-design/icons'
 export default function FloatMenu() {
     return (
         <>
-            {window.location.pathname !== '/' ? <FloatButton tooltip='首页' icon={<HomeOutlined />} href='/' /> : ''}
+            {window.location.pathname !== '/' ? <FloatButton tooltip='首页' icon={<HomeOutlined />} href={process.env.NODE_ENV == 'development' ? '/' : '/YunGui/'} /> : ''}
         </>
     )
 }
